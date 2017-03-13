@@ -122,7 +122,7 @@
                                 <strong>About</strong>
                             </h4>
                             <p>Learn about the Qline</p>
-                            <a href="#" class="btn btn-light">Learn More</a>
+                            <a href="about" class="btn btn-light">Learn More</a>
 
                         </div>
                     </div>
