@@ -21,7 +21,7 @@ public class HomeController {
     {
         FBConnection fbConnection = new FBConnection();
         return new
-                ModelAndView("welcome","message",fbConnection.getFBAuthUrl());
+                ModelAndView("mainpage","message",fbConnection.getFBAuthUrl());
 
     }
 
@@ -38,18 +38,18 @@ public class HomeController {
         FBGraph fbGraph = new FBGraph(accessToken);
         String graph = fbGraph.getFBGraph();
         Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
-        String out = "";
-        out = out.concat("<h1>Facebook Login using Java</h1>");
-        //out = out.concat("<h2>Facebook Login using Java</h2>");
-        out = out.concat("<div> Welcome" + fbProfileData.get("name"));
-        out = out.concat("<div> Your Email" + fbProfileData.get("email"));
-        out = out.concat("<div> You are" + fbProfileData.get("gender"));
+//        String out = "";
+//        out = out.concat("<h1>Facebook Login using Java</h1>");
+//        //out = out.concat("<h2>Facebook Login using Java</h2>");
+//        out = out.concat("<div> Welcome" + fbProfileData.get("name"));
+//        out = out.concat("<div> Your Email" + fbProfileData.get("email"));
+//        out = out.concat("<div> You are" + fbProfileData.get("gender"));
 
 
 
 
         return new
-                ModelAndView("welcome2","message",out);
+                ModelAndView("welcome2","message","");
 
     }
 

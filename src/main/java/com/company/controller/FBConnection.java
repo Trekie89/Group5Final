@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 public class FBConnection {
     public static final String FB_APP_ID = "1818062278469925";
     public static final String FB_APP_SECRET = "9b568286bc9f424508117c88f781da86";
-    public static final String REDIRECT_URI = "http://localhost:8080/welcome2";
+    public static final String REDIRECT_URI = "http://localhost:8080/mainpage";
 
     static String accessToken = "";
 
@@ -39,7 +39,7 @@ public class FBConnection {
     }
 
     public String getAccessToken(String code) {
-        if (accessToken.equals("050d25ba2aaad2a04f71c7913c69eda5")) {
+        if (accessToken.equals("")) {
             URL fbGraphURL;
             try {
                 fbGraphURL = new URL(getFBGraphUrl(code));

@@ -71,7 +71,7 @@
     <div class="text-vertical-center">
         <h1>QLine Trip Planner</h1>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+        <a href="${message}" class="btn btn-dark btn-lg">Login with Facebook</a>
     </div>
 </header>
 
