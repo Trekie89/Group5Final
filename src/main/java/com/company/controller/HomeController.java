@@ -75,5 +75,62 @@ public class HomeController {
 
     }
 
+    public ArrayList<FoodEntity> getAllFood() {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectFood = sessionFactory.openSession();
+
+        selectFood.beginTransaction();
+
+        Criteria c = selectFood.createCriteria(FoodEntity.class);
+
+        //c.add(Restrictions.like("stationId",stationID));
+
+        ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>)c.list();
+
+        return foodlist;
+    }
+
+    public ArrayList<EntertainmentEntity> getAllEntertainment() {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectEntertainment = sessionFactory.openSession();
+
+        selectEntertainment.beginTransaction();
+
+        Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
+
+//        c.add(Restrictions.like("stationId","5"));
+
+        ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>)c.list();
+
+        return entertainmentList;
+    }
+
+    public ArrayList<RetailEntity> getAllRetail() {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectRetail = sessionFactory.openSession();
+
+        selectRetail.beginTransaction();
+
+        Criteria c = selectRetail.createCriteria(RetailEntity.class);
+
+//        c.add(Restrictions.like("stationId","5"));
+
+        ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
+
+        return retailList;
+    }
+
 
 }
