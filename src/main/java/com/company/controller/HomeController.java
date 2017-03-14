@@ -44,6 +44,7 @@ public class HomeController {
 //        out = out.concat("<div> Welcome" + fbProfileData.get("name"));
 //        out = out.concat("<div> Your Email" + fbProfileData.get("email"));
 //        out = out.concat("<div> You are" + fbProfileData.get("gender"));
+        //hi everyone!
 
 
 
