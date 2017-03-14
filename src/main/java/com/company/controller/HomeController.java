@@ -38,7 +38,7 @@ public class HomeController {
         FBGraph fbGraph = new FBGraph(accessToken);
         String graph = fbGraph.getFBGraph();
         Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
-//        String out = "";
+        String out = "";
 //        out = out.concat("<h1>Facebook Login using Java</h1>");
 //        //out = out.concat("<h2>Facebook Login using Java</h2>");
 //        out = out.concat("<div> Welcome" + fbProfileData.get("name"));
