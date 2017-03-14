@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.controller.StationsEntity" table="stations" schema="qline">
+        <id name="stationId">
+            <column name="stationID" sql-type="int(11)"/>
+        </id>
+        <property name="stattionName">
+            <column name="stattionName" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="latitude">
+            <column name="latitude" sql-type="float" precision="-1"/>
+        </property>
+        <property name="longitude">
+            <column name="longitude" sql-type="float" precision="-1"/>
+        </property>
+    </class>
+</hibernate-mapping>

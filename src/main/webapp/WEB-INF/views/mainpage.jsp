@@ -70,7 +70,6 @@
 <header id="top" class="header">
     <div class="text-vertical-center">
         <h1>QLine Trip Planner</h1>
-        <h3>Welcome &amp; to the Qline</h3>
         <br>
         <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
     </div>
@@ -82,7 +81,6 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>Welcome to the QLine in Detroit, MI.</h2>
-                <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
             </div>
         </div>
         <!-- /.row -->
@@ -162,46 +160,18 @@
     <!-- /.container -->
 </section>
 
-<!-- Callout -->
-<aside class="callout">
-    <div class="text-vertical-center">
-        <h1>Vertically Centered Text</h1>
-    </div>
-</aside>
-
 <!-- Portfolio -->
 <section id="portfolio" class="portfolio">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Our Work</h2>
+                <h2>Map of the Stations</h2>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="portfolio-item">
                             <a href="#">
-                                <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
+                                <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
                             </a>
                         </div>
                     </div>

@@ -30,6 +30,8 @@ public class HomeController {
     public ModelAndView helloWorld2()
     {
 
+
+
         return new
                 ModelAndView("plantrip","cList","hello world");
 
@@ -53,5 +55,15 @@ public class HomeController {
 
     }
 
+//    private ArrayList<String> getStations(ArrayList<StationsEntity> stationList) {
+//
+//        ArrayList<String> stations = new ArrayList<String>();
+//
+//        stationList.stream().collect(Collectors.toList());
+//
+//        stations = (ArrayList<String>) stationList.stream().map(sc -> sc.getStattionName()).collect(Collectors.toList());
+//
+//        return stations;
+//    }
 
 }
