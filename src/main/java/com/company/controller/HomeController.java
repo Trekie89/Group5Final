@@ -39,15 +39,6 @@ public class HomeController {
         String graph = fbGraph.getFBGraph();
         Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
         String out = "";
-//        out = out.concat("<h1>Facebook Login using Java</h1>");
-//        //out = out.concat("<h2>Facebook Login using Java</h2>");
-//        out = out.concat("<div> Welcome" + fbProfileData.get("name"));
-//        out = out.concat("<div> Your Email" + fbProfileData.get("email"));
-//        out = out.concat("<div> You are" + fbProfileData.get("gender"));
-        //hi everyone!
-
-
-
 
         return new
                 ModelAndView("welcome2","message","");
@@ -84,15 +75,5 @@ public class HomeController {
 
     }
 
-//    private ArrayList<String> getStations(ArrayList<StationsEntity> stationList) {
-//
-//        ArrayList<String> stations = new ArrayList<String>();
-//
-//        stationList.stream().collect(Collectors.toList());
-//
-//        stations = (ArrayList<String>) stationList.stream().map(sc -> sc.getStattionName()).collect(Collectors.toList());
-//
-//        return stations;
-//    }
 
 }

@@ -12,7 +12,6 @@ public class FoodEntity {
     private String name;
     private String address;
     private String website;
-    private int stationId;
 
     @Id
     @Column(name = "idfood", nullable = false)
@@ -54,16 +53,6 @@ public class FoodEntity {
         this.website = website;
     }
 
-    @Basic
-    @Column(name = "stationID", nullable = false)
-    public int getStationId() {
-        return stationId;
-    }
-
-    public void setStationId(int stationId) {
-        this.stationId = stationId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,7 +61,6 @@ public class FoodEntity {
         FoodEntity that = (FoodEntity) o;
 
         if (idfood != that.idfood) return false;
-        if (stationId != that.stationId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (website != null ? !website.equals(that.website) : that.website != null) return false;
@@ -86,7 +74,6 @@ public class FoodEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (website != null ? website.hashCode() : 0);
-        result = 31 * result + stationId;
         return result;
     }
 }
