@@ -167,4 +167,5 @@ public class HomeController {
         Long count = (Long)query.uniqueResult();
         return count;
     }
+
 }
