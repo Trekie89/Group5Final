@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -74,26 +76,7 @@ public class HomeController {
 
     }
 
-    public ArrayList<FoodEntity> getAllFood() {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        Session selectFood = sessionFactory.openSession();
-
-        selectFood.beginTransaction();
-
-        Criteria c = selectFood.createCriteria(FoodEntity.class);
-
-        //c.add(Restrictions.like("stationId",stationID));
-
-        ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>)c.list();
-
-        return foodlist;
-    }
-
-    public ArrayList<EntertainmentEntity> getAllEntertainment() {
+    public ArrayList<EntertainmentEntity> getAllEntertainment(int stationID) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -105,14 +88,14 @@ public class HomeController {
 
         Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
 
-//        c.add(Restrictions.like("stationId","5"));
+        c.add(Restrictions.like("stationId", stationID));
 
         ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>)c.list();
 
         return entertainmentList;
     }
 
-    public ArrayList<RetailEntity> getAllRetail() {
+    public ArrayList<RetailEntity> getAllRetail(int stationID) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -124,52 +107,14 @@ public class HomeController {
 
         Criteria c = selectRetail.createCriteria(RetailEntity.class);
 
-//        c.add(Restrictions.like("stationId","x"));
+        c.add(Restrictions.like("stationId", stationID));
 
         ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
 
         return retailList;
     }
 
-    public ArrayList<EntertainmentEntity> getAllEntertainment(int x) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        Session selectEntertainment = sessionFactory.openSession();
-
-        selectEntertainment.beginTransaction();
-
-        Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
-
-        c.add(Restrictions.like("stationId","x"));
-
-        ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>)c.list();
-
-        return entertainmentList;
-    }
-
-    public ArrayList<RetailEntity> getAllRetail(int x) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        Session selectRetail = sessionFactory.openSession();
-
-        selectRetail.beginTransaction();
-
-        Criteria c = selectRetail.createCriteria(RetailEntity.class);
-
-        c.add(Restrictions.like("stationId","x"));
-
-        ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
-
-        return retailList;
-    }
-
-    public ArrayList<FoodEntity> getAllFood(int x) {
+    public ArrayList<FoodEntity> getAllFood(int stationID) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -181,35 +126,28 @@ public class HomeController {
 
         Criteria c = selectFood.createCriteria(FoodEntity.class);
 
-        c.add(Restrictions.like("stationId","x"));
+        c.add(Restrictions.like("stationId", stationID));
 
         ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>)c.list();
 
         return foodlist;
     }
-
-
 
     @RequestMapping("getStation")
 
-    public ModelAndView nearStation(@RequestParam("station") int id, Model model)
+    public ModelAndView nearStation(@RequestParam("stationId") int stationID)
     {
 
+        List<FoodEntity> foodList = getAllFood(stationID);
+        List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
+        List<RetailEntity> retailList = getAllRetail(stationID);
 
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("food", foodList);
+        model.put("entertainment", entertainmentList);
+        model.put("retail", retailList);
 
-        ArrayList<RetailEntity> rlist = getAllRetail(id);
-        ArrayList<EntertainmentEntity> elist = getAllEntertainment(id);
-        ArrayList<FoodEntity> flist = getAllFood(id);
-
-        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(rlist);
-        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(elist);
-        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(flist);
-
-
-        return new ModelAndView("displayChoice", "stationRetail", getNear);
-
-
-
+        return new ModelAndView("displayChoice", "model", model);
 
     }
 
