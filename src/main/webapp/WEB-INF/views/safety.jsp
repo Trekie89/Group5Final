@@ -11,7 +11,8 @@
     <title>Safety</title>
 </head>
 <body>
-<h1> QLine Safety Tips<h1><br>
+${cList}
+<h1> QLine Safety Tips </h1><br>
     <hr>
     <ul>
         <li>Somthing blah blah blah blah blah blah blah blah</li>
@@ -24,5 +25,5 @@
         <li>Somthing blah blah blah blah blah blah blah blah</li>
         <li>Somthing blah blah blah blah blah blah blah blah</li>
     </ul>
-
+</body>
 </html>

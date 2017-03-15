@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,19 +21,17 @@ import java.util.Map;
 public class HomeController {
     @RequestMapping("/")
 
-    public ModelAndView helloWorld()
-    {
+    public ModelAndView helloWorld() {
         FBConnection fbConnection = new FBConnection();
         return new
-                ModelAndView("mainpage","message",fbConnection.getFBAuthUrl());
+                ModelAndView("mainpage", "message", fbConnection.getFBAuthUrl());
 
     }
 
     @RequestMapping("welcome2")
 
-    public ModelAndView helloWorld2(@RequestParam("code") String code)
-    {
-        if (code == null || code.equals("")){
+    public ModelAndView helloWorld2(@RequestParam("code") String code) {
+        if (code == null || code.equals("")) {
             throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
         }
         FBConnection fbConnection = new FBConnection();
@@ -44,35 +43,34 @@ public class HomeController {
         String out = "";
 
         return new
-                ModelAndView("welcome2","message","");
+                ModelAndView("welcome2", "message", "");
 
     }
 
     @RequestMapping("plan")
 
-    public ModelAndView helloWorld2()
-    {
+    public ModelAndView helloWorld2() {
 
         return new
-                ModelAndView("plantrip","cList","hello world");
+                ModelAndView("plantrip", "cList", "hello world");
 
     }
+
     @RequestMapping("about")
 
-    public ModelAndView helloWorld3()
-    {
+    public ModelAndView helloWorld3() {
 
         return new
-                ModelAndView("about","cList","hello world");
+                ModelAndView("about", "cList", "hello world");
 
     }
+
     @RequestMapping("safety")
 
-    public ModelAndView helloWorld4()
-    {
+    public ModelAndView helloWorld4() {
 
         return new
-                ModelAndView("safety","cList","hello world");
+                ModelAndView("safety", "cList", getQuery());
 
     }
 
@@ -90,7 +88,7 @@ public class HomeController {
 
         c.add(Restrictions.like("stationId", stationID));
 
-        ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>)c.list();
+        ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>) c.list();
 
         return entertainmentList;
     }
@@ -109,7 +107,7 @@ public class HomeController {
 
         c.add(Restrictions.like("stationId", stationID));
 
-        ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
+        ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>) c.list();
 
         return retailList;
     }
@@ -128,15 +126,14 @@ public class HomeController {
 
         c.add(Restrictions.like("stationId", stationID));
 
-        ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>)c.list();
+        ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>) c.list();
 
         return foodlist;
     }
 
     @RequestMapping("getStation")
 
-    public ModelAndView nearStation(@RequestParam("stationId") int stationID)
-    {
+    public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
 
         List<FoodEntity> foodList = getAllFood(stationID);
         List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
@@ -151,4 +148,26 @@ public class HomeController {
 
     }
 
+    public Long getQuery() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectFood = sessionFactory.openSession();
+
+        selectFood.beginTransaction();
+
+        //Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
+
+       // c.add(Restrictions.like("stationId", stationID));
+
+//        String hql = "from stations count(stationid) FoodEntity where staionid= 3";
+//        Query query = selectFood.createQuery(hql);
+//        String results = query.toString();
+
+        Query query = selectFood.createQuery(
+                "select count(stationId) from FoodEntity  where stationId=1");
+        Long count = (Long)query.uniqueResult();
+        return count;
+    }
 }
