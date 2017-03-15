@@ -148,7 +148,7 @@ public class HomeController {
 
     }
 
-    public Long getQuery() {
+    public Integer getQuery() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
         SessionFactory sessionFactory = cfg.buildSessionFactory();
@@ -161,13 +161,10 @@ public class HomeController {
 
        // c.add(Restrictions.like("stationId", stationID));
 
-//        String hql = "from stations count(stationid) FoodEntity where staionid= 3";
-//        Query query = selectFood.createQuery(hql);
-//        String results = query.toString();
 
         Query query = selectFood.createQuery(
                 "select count(stationId) from FoodEntity  where stationId=1");
-        Long count = (Long)query.uniqueResult();
+        Integer count = (Integer)query.uniqueResult();
         return count;
     }
 }
