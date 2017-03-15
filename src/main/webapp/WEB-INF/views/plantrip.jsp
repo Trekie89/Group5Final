@@ -44,22 +44,22 @@
 
 <p> I'm at a station, what can I do</p>
 
-<form>
+<form action="getStation" method="get">
 
     <select name="station" onchange="this.form.submit()">
         <option value="" disabled="disabled" selected="selected">Please select a station</option>
-        <option value="Congress" >Congress</option>
-        <option value="Campus Martius">Campus Martius</option>
-        <option value="Grand Circus">Grand Circus</option>
-        <option value="FoxTown ">FoxTown </option>
-        <option value="Sibley">Sibley</option>
-        <option value="Martin Luther King Jr.">Martin Luther King Jr.</option>
-        <option value="Canfield">Canfield</option>
-        <option value="Warren">Warren</option>
-        <option value="Ferry">Ferry</option>
-        <option value="Amsterdam">Amsterdam</option>
-        <option value="Amtrak">Amtrak</option>
-        <option value="Grand Station">Grand Station</option>
+        <option value=1 >Congress</option>
+        <option value=2>Campus Martius</option>
+        <option value=3>Grand Circus</option>
+        <option value=4>FoxTown </option>
+        <option value=5>Sibley</option>
+        <option value=6>Martin Luther King Jr.</option>
+        <option value=7>Canfield</option>
+        <option value=8>Warren</option>
+        <option value=9>Ferry</option>
+        <option value=10>Amsterdam</option>
+        <option value=11>Amtrak</option>
+        <option value=12>Grand Station</option>
     </select>
 
 </form>

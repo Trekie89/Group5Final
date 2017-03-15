@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -123,12 +124,93 @@ public class HomeController {
 
         Criteria c = selectRetail.createCriteria(RetailEntity.class);
 
-//        c.add(Restrictions.like("stationId","5"));
+//        c.add(Restrictions.like("stationId","x"));
 
         ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
 
         return retailList;
     }
 
+    public ArrayList<EntertainmentEntity> getAllEntertainment(int x) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectEntertainment = sessionFactory.openSession();
+
+        selectEntertainment.beginTransaction();
+
+        Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
+
+        c.add(Restrictions.like("stationId","x"));
+
+        ArrayList<EntertainmentEntity> entertainmentList = (ArrayList<EntertainmentEntity>)c.list();
+
+        return entertainmentList;
+    }
+
+    public ArrayList<RetailEntity> getAllRetail(int x) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectRetail = sessionFactory.openSession();
+
+        selectRetail.beginTransaction();
+
+        Criteria c = selectRetail.createCriteria(RetailEntity.class);
+
+        c.add(Restrictions.like("stationId","x"));
+
+        ArrayList<RetailEntity> retailList = (ArrayList<RetailEntity>)c.list();
+
+        return retailList;
+    }
+
+    public ArrayList<FoodEntity> getAllFood(int x) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session selectFood = sessionFactory.openSession();
+
+        selectFood.beginTransaction();
+
+        Criteria c = selectFood.createCriteria(FoodEntity.class);
+
+        c.add(Restrictions.like("stationId","x"));
+
+        ArrayList<FoodEntity> foodlist = (ArrayList<FoodEntity>)c.list();
+
+        return foodlist;
+    }
+
+
+
+    @RequestMapping("getStation")
+
+    public ModelAndView nearStation(@RequestParam("station") int id, Model model)
+    {
+
+
+
+        ArrayList<RetailEntity> rlist = getAllRetail(id);
+        ArrayList<EntertainmentEntity> elist = getAllEntertainment(id);
+        ArrayList<FoodEntity> flist = getAllFood(id);
+
+        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(rlist);
+        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(elist);
+        //ArrayList<FoodEntertainmentRetail> getNear = getNear.addAll(flist);
+
+
+        return new ModelAndView("displayChoice", "stationRetail", getNear);
+
+
+
+
+    }
 
 }
