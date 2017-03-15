@@ -13,31 +13,35 @@
 </head>
 <body>
 
+<h1> Food Nearby </h1> <br>
 <table border=1>
 
     <c:forEach var="element" items="${model.food}">
         <tr>
-            <td> ${element.name}</td> <td> ${element.address}</td>
+            <td> ${element.name}</td> <td> ${element.address}</td> <td><a href = "${element.website}">${element.website}</a></td>
         </tr>
     </c:forEach>
 
-</table>
+</table> <br>
 
+<h1> Entertainment Nearby </h1> <br>
 <table border=1>
 
     <c:forEach var="element" items="${model.entertainment}">
         <tr>
-            <td> ${element.name}</td> <td> ${element.address}</td>
+            <td> ${element.name}</td> <td> ${element.address}</td> <td><a href = "${element.website}">${element.website}</a></td>
         </tr>
     </c:forEach>
 
-</table>
+</table> <br>
+
+<h1> Retail Nearby </h1> <br>
 
 <table border=1>
 
     <c:forEach var="element" items="${model.retail}">
         <tr>
-            <td> ${element.name}</td> <td> ${element.address}</td>
+            <td> ${element.name}</td> <td> ${element.address}</td> <td><a href = "${element.website}">${element.website}</a></td>
         </tr>
     </c:forEach>
 
