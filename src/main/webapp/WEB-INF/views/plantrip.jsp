@@ -48,7 +48,7 @@
 
     <select name="stationId" onchange="this.form.submit()">
         <option value="" disabled="disabled" selected="selected">Please select a station</option>
-        <option value= 1>Congress</option>
+        <option value= "1">Congress</option>
         <option value="2">Campus Martius</option>
         <option value="3">Grand Circus</option>
         <option value="4">FoxTown </option>
