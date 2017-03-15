@@ -17,5 +17,8 @@
         <property name="website">
             <column name="website" sql-type="varchar(100)" length="100" not-null="true"/>
         </property>
+        <property name="stationId">
+            <column name="stationID" sql-type="int(11)"/>
+        </property>
     </class>
 </hibernate-mapping>

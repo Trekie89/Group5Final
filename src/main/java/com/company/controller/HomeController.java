@@ -50,8 +50,6 @@ public class HomeController {
     public ModelAndView helloWorld2()
     {
 
-
-
         return new
                 ModelAndView("plantrip","cList","hello world");
 

@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Samantha on 3/13/2017.
@@ -12,6 +13,27 @@ public class StationsEntity {
     private String stattionName;
     private double latitude;
     private double longitude;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="stationID")
+    private Set<FoodEntity> foodEntity;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="stationID")
+    private Set<EntertainmentEntity> entertainmentEntity;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="stationID")
+    private Set<RetailEntity> retailEntity;
+
+    public StationsEntity(Set<FoodEntity> foodEntity, Set<EntertainmentEntity> entertainmentEntity, Set<RetailEntity> retailEntity) {
+        this.foodEntity = foodEntity;
+        this.entertainmentEntity = entertainmentEntity;
+        this.retailEntity = retailEntity;
+    }
+
+    public StationsEntity() {
+    }
 
     @Id
     @Column(name = "stationID", nullable = false)

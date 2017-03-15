@@ -1,5 +1,7 @@
 package com.company.controller;
 
+import org.hibernate.annotations.ForeignKey;
+
 import javax.persistence.*;
 
 /**
@@ -12,6 +14,19 @@ public class FoodEntity {
     private String name;
     private String address;
     private String website;
+
+    @ManyToOne
+    @ForeignKey(name="FK_Station")
+    private StationsEntity stationF;
+    private int stationId;
+
+    public int getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(int stationId) {
+        this.stationId = stationId;
+    }
 
     @Id
     @Column(name = "idfood", nullable = false)
