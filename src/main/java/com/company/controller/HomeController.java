@@ -148,7 +148,7 @@ public class HomeController {
 
     }
 
-    public Integer getQuery() {
+    public Long getQuery() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
         SessionFactory sessionFactory = cfg.buildSessionFactory();
@@ -164,7 +164,7 @@ public class HomeController {
 
         Query query = selectFood.createQuery(
                 "select count(stationId) from FoodEntity  where stationId=1");
-        Integer count = (Integer)query.uniqueResult();
+        Long count = (Long)query.uniqueResult();
         return count;
     }
 }
