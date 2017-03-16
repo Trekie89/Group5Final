@@ -61,6 +61,15 @@ public class HomeController {
 
     }
 
+    @RequestMapping("direction")
+
+    public ModelAndView getDirection() {
+
+        return new
+                ModelAndView("direction", "cList", getQuery());
+
+    }
+
     @RequestMapping("about")
 
     public ModelAndView helloWorld3() {
