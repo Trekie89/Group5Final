@@ -41,7 +41,8 @@ public class HomeController {
         String graph = fbGraph.getFBGraph();
         Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
         String out = "";
-
+        out = out.concat("<div> Welcome " +fbProfileData.get("name"));
+        out = out.concat("<div> Your Email: " + fbProfileData.get("email"));
         return new
                 ModelAndView("welcome2", "message", "");
 
