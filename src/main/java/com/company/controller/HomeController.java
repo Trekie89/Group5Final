@@ -5,7 +5,6 @@ import com.company.entity.EntertainmentEntity;
 import com.company.entity.FoodEntity;
 import com.company.entity.RetailEntity;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -66,7 +65,8 @@ public class HomeController {
     public ModelAndView getDirection() {
 
         return new
-                ModelAndView("direction", "cList", getQuery());
+                ModelAndView("direction", "message", "");
+
 
     }
 
