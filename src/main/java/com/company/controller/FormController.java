@@ -42,7 +42,7 @@ public class FormController {
 
         Transaction tx = session.beginTransaction();
 
-        FoodEntity newFood = new FoodEntity ();
+        FoodEntity newFood = new FoodEntity();
 
 //set all values for the new customer
 
@@ -63,7 +63,6 @@ public class FormController {
     }
 
 
-
     @RequestMapping("processForm1")
 
     public ModelAndView getForm1(@RequestParam("name") String name,
@@ -79,7 +78,7 @@ public class FormController {
 
         Transaction tx = session.beginTransaction();
 
-        RetailEntity newRetail = new RetailEntity ();
+        RetailEntity newRetail = new RetailEntity();
 
 //set all values for the new customer
         newRetail.setName(name);
@@ -113,7 +112,7 @@ public class FormController {
 
         Transaction tx = session.beginTransaction();
 
-        EntertainmentEntity newEntertainment = new EntertainmentEntity ();
+        EntertainmentEntity newEntertainment = new EntertainmentEntity();
 
 //set all values for the new customer
         newEntertainment.setName(name);
@@ -131,13 +130,22 @@ public class FormController {
         return new
                 ModelAndView("confirmpage", "message", "Thank you for submitting");
     }
+
+    @RequestMapping("newUser")
+    public ModelAndView newUser() {
+
+        return new
+                ModelAndView("newUser", "message", "");
+
+    }
+
     @RequestMapping("processFormUser")
 
     public ModelAndView getForm3(@RequestParam("userLogin") String userLogin,
                                  @RequestParam("firstName") String firstName,
                                  @RequestParam("lastName") String lastName,
                                  @RequestParam("phoneNumber") String phoneNumber,
-                                 @RequestParam("password")  String password) {
+                                 @RequestParam("password") String password) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -147,7 +155,7 @@ public class FormController {
 
         Transaction tx = session.beginTransaction();
 
-        UserinfoEntity newUser = new UserinfoEntity ();
+        UserinfoEntity newUser = new UserinfoEntity();
 
 //set all values for the new user
 
@@ -158,7 +166,6 @@ public class FormController {
         newUser.setPassword(password);
 
 
-
         session.save(newUser);
 
         tx.commit();
@@ -167,6 +174,7 @@ public class FormController {
 
 
         return new
-                ModelAndView("newUser", "message", "Thank you for registering");
+                ModelAndView("confirmpage", "message", "Thank you for registering");
     }
+
 }

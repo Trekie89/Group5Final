@@ -11,21 +11,17 @@
     <title>newUser</title>
 </head>
 <body>
-<form action="processForm" method = "post">
-
 <h3> User Registration</h3>
 
+<form action="processFormUser" method = "post">
 
-    <select name="stationId" >
-        <option value= "userLogin">User Name</option>
-        <option value="firstName">First Name</option>
-        <option value="lastName">Last Name </option>
-        <option value="phoneNumber">Phone Number </option>
-        <option value="password">Password</option>
-    </select>
+    User Name: <input type="text" name="userLogin"><br>
+    First Name: <input type="text" name="firstName"><br>
+    Last Name: <input type="text" name="lastName"><br>
+    Phone Number: <input type="tel" name="phoneNumber"><br>
+    Password: <input type="password" name="password"><br>
+        <input type="submit" value="submit">
+    </form>
 
-    <input type="submit" value="submit">
-
-</form> <br>
 </body>
 </html>
