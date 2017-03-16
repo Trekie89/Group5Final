@@ -127,4 +127,42 @@ public class FormController {
         return new
                 ModelAndView("confirmpage", "message", "Thank you for submitting");
     }
+    @RequestMapping("processFormUser")
+
+    public ModelAndView getForm3(@RequestParam("userLogin") String userLogin,
+                                 @RequestParam("firstName") String firstName,
+                                 @RequestParam("lastName") String lastName,
+                                 @RequestParam("phoneNumber") String phoneNumber,
+                                 @RequestParam("password")  String password) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+        Session session = sessionFactory.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+        UserinfoEntity newUser = new UserinfoEntity ();
+
+//set all values for the new user
+
+        newUser.setUserLogin(userLogin);
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
+        newUser.setPhoneNumber(phoneNumber);
+        newUser.setPassword(password);
+
+
+
+        session.save(newUser);
+
+        tx.commit();
+
+        session.close();
+
+
+        return new
+                ModelAndView("newUser", "message", "Thank you for registering");
+    }
 }
