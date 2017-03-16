@@ -130,9 +130,8 @@
     <input type="submit" />
     <input type="reset" />
 </form>
-
-
-
+<br>
+<a href = "plan">Go back to main</a>
 
 <div id="map"></div>
 <p id="error"></p>

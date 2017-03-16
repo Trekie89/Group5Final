@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samantha
-  Date: 3/13/2017
-  Time: 2:30 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,7 +53,7 @@
 
 </form> <br>
 
-<a href = "mainpage">Go back to main</a>
+<a href = "/">Go back to main</a>
 
 </body>
 </html>
