@@ -16,6 +16,7 @@ public class UserinfoEntity {
     private String phoneNumber;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID", nullable = false)
     public int getUserId() {
         return userId;
