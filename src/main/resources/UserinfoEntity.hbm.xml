@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.company.controller.UserinfoEntity" table="userinfo" schema="qline">
+    <class name="com.company.entity.UserinfoEntity" table="userinfo" schema="qline">
         <id name="userId">
             <column name="userID" sql-type="int(11)"/>
         </id>

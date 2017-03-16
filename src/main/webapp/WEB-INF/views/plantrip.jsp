@@ -62,7 +62,9 @@
         <option value="12">Grand Station</option>
     </select>
 
-</form>
+</form> <br>
+
+<a href = "mainpage">Go back to main</a>
 
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.company.controller;
 
 
+import com.company.entity.EntertainmentEntity;
+import com.company.entity.FoodEntity;
+import com.company.entity.RetailEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
