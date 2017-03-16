@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.entity;
 
 
 import javax.persistence.*;

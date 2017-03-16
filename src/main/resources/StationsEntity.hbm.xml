@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.company.controller.StationsEntity" table="stations" schema="qline">
+    <class name="com.company.entity.StationsEntity" table="stations" schema="qline">
         <id name="stationId">
             <column name="stationID" sql-type="int(11)"/>
         </id>

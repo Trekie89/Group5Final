@@ -24,6 +24,9 @@ ${cList}
         <li>Somthing blah blah blah blah blah blah blah blah</li>
         <li>Somthing blah blah blah blah blah blah blah blah</li>
         <li>Somthing blah blah blah blah blah blah blah blah</li>
-    </ul>
+    </ul><br>
+
+<a href = "mainpage">Go back to main</a>
+
 </body>
 </html>

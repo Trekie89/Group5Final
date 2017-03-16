@@ -45,7 +45,9 @@
         </tr>
     </c:forEach>
 
-</table>
+</table> <br>
+
+<a href = "mainpage">Go back to main</a>
 
 
 </body>

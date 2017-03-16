@@ -91,7 +91,9 @@
 
     <input type="submit" value="submit">
 
-</form>
+</form> <br>
+
+<a href = "mainpage">Go back to main</a>
 
 </body>
 </html>

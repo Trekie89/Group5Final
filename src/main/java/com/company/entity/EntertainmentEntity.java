@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.entity;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -8,16 +8,16 @@ import javax.persistence.*;
  * Created by Samantha on 3/14/2017.
  */
 @Entity
-@Table(name = "food", schema = "qline", catalog = "")
-public class FoodEntity {
-    private int idfood;
+@Table(name = "entertainment", schema = "qline", catalog = "")
+public class EntertainmentEntity {
+    private int identertainment;
     private String name;
     private String address;
     private String website;
 
     @ManyToOne
     @ForeignKey(name="FK_Station")
-    private StationsEntity stationF;
+    private StationsEntity stationE;
     private int stationId;
 
     public int getStationId() {
@@ -30,13 +30,13 @@ public class FoodEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idfood", nullable = false)
-    public int getIdfood() {
-        return idfood;
+    @Column(name = "identertainment", nullable = false)
+    public int getIdentertainment() {
+        return identertainment;
     }
 
-    public void setIdfood(int idfood) {
-        this.idfood = idfood;
+    public void setIdentertainment(int identertainment) {
+        this.identertainment = identertainment;
     }
 
     @Basic
@@ -60,7 +60,7 @@ public class FoodEntity {
     }
 
     @Basic
-    @Column(name = "website", nullable = true, length = 50)
+    @Column(name = "website", nullable = true, length = 100)
     public String getWebsite() {
         return website;
     }
@@ -74,9 +74,9 @@ public class FoodEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FoodEntity that = (FoodEntity) o;
+        EntertainmentEntity that = (EntertainmentEntity) o;
 
-        if (idfood != that.idfood) return false;
+        if (identertainment != that.identertainment) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (website != null ? !website.equals(that.website) : that.website != null) return false;
@@ -86,7 +86,7 @@ public class FoodEntity {
 
     @Override
     public int hashCode() {
-        int result = idfood;
+        int result = identertainment;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (website != null ? website.hashCode() : 0);
