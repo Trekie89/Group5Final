@@ -84,7 +84,7 @@ public class HomeController {
     public ModelAndView helloWorld4() {
 
         return new
-                ModelAndView("safety", "cList", getQuery());
+                ModelAndView("safety", "cList", "");
 
     }
 
@@ -162,7 +162,7 @@ public class HomeController {
 
     }
 
-    public Long getQuery() {
+    /*public Long getQuery() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFactory = cfg.buildSessionFactory();
         Session selectFood = sessionFactory.openSession();
@@ -178,12 +178,13 @@ public class HomeController {
                 "select count(stationId) from FoodEntity  where stationId=1");
         Long count = (Long)query.uniqueResult();
         return count;
-    }
+    }*/
 
 
 
-    public ArrayList<PlacesCount> getEntertainment(int y) throws ClassNotFoundException, SQLException {
-
+    public ArrayList<PlacesCount> getActivity(int y) throws ClassNotFoundException, SQLException {
+        //selecting the appropriate query based on what the user chose in option 3 and
+        // returns an arrayList.
         String query = "";
         if(y==1) {
             query = "SELECT food.stationID, stations.stattionName, sum(1) as Quantity\n" +
@@ -209,44 +210,34 @@ public class HomeController {
         String userName = "root";
         String passWord = "group5qline";
 
-
-
-        // this is step 2.  Load and register driver
         Class.forName("com.mysql.jdbc.Driver");
 
-        //3 Create connection
         Connection con = DriverManager.getConnection(url,userName,passWord);
 
-        //4 Create Statement
         Statement st = con.createStatement();
 
-        //5
+
         ResultSet rs = st.executeQuery(query);
         ArrayList<PlacesCount> list = new ArrayList<PlacesCount>();
 
-        //6  process results
+
         while(rs.next()) {
-            int stationID = rs.getInt("stationID");//name of column is code
+            int stationID = rs.getInt("stationID");
             String stattionname = rs.getString("stattionname");
             int quantity = rs.getInt("Quantity");
             PlacesCount temp = new PlacesCount(stationID, stattionname, quantity);
-
             list.add(temp);
-
         }
-        //7 Close Connection
+
         st.close();
         con.close();
-
-
         return list;
-
     }
 
     @RequestMapping("getFromCategory")
 
     public ModelAndView returnEnt(@RequestParam("activity") int x) throws SQLException, ClassNotFoundException {
-        ArrayList<PlacesCount> getList = getEntertainment(x);
+        ArrayList<PlacesCount> getList = getActivity(x);
 
         return new ModelAndView("entertainmentNear", "nearby", getList);
     }
