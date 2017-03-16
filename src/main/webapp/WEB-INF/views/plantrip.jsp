@@ -15,14 +15,7 @@
 <h1> Option 1</h1>
 
 <p> I parked here, where is the closest station?</p>
-
-<form>
-
-    Parked Here:
-
-    Closest Station:
-
-</form>
+<a href="direction">Directions</a>
 
 
 <h1> Option 2</h1>
