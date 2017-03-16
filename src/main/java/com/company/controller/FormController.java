@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.entity.EntertainmentEntity;
 import com.company.entity.FoodEntity;
 import com.company.entity.RetailEntity;
+import com.company.entity.UserinfoEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
