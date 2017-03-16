@@ -28,6 +28,7 @@ public class RetailEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "retailId", nullable = false)
     public int getRetailId() {
         return retailId;

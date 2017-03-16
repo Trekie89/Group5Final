@@ -29,6 +29,7 @@ public class FoodEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idfood", nullable = false)
     public int getIdfood() {
         return idfood;

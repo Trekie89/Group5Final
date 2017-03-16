@@ -144,10 +144,10 @@
                                 <i class="fa fa-shield fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Service Name</strong>
+                                <strong>Add Activity</strong>
                             </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <a href="#" class="btn btn-light">Learn More</a>
+                            <p>Not seeing something on our site, please put it in!</p>
+                            <a href="addActivity" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
                 </div>

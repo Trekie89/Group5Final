@@ -29,6 +29,7 @@ public class EntertainmentEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "identertainment", nullable = false)
     public int getIdentertainment() {
         return identertainment;
