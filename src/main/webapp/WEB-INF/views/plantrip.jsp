@@ -24,15 +24,17 @@
 
 </form>
 
+
 <h1> Option 2</h1>
 
 <p> I know what I want to do, where is the closest station</p>
+<form action="getFromCategory" method="get">
 
     <select name="activity" onchange="this.form.submit()">
         <option value="" disabled="disabled" selected="selected">Please select a activity</option>
-        <option value="Food" >Food</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Retail">Retail</option>
+        <option value=1 >Food</option>
+        <option value=2>Entertainment</option>
+        <option value=3>Retail</option>
     </select>
 
 <form>
