@@ -13,7 +13,7 @@
 <body>
 <h3> User Registration</h3>
 
-<form action="processFormUser" method = "post">
+<form action="addUser" method = "post">
 
     User Name: <input type="text" name="userLogin"><br>
     First Name: <input type="text" name="firstName"><br>

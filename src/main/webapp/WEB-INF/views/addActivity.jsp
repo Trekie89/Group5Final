@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="processForm" method = "post">
+<form action="addFood" method = "post">
 
     Type: Food <br>
     Name: <input type="text" name="name"> <br>
@@ -39,7 +39,7 @@
 
 </form> <br>
 
-<form action="processForm1" method = "post">
+<form action="addRetail" method = "post">
 
     Type: Retail <br>
     Name: <input type="text" name="name"> <br>
@@ -66,7 +66,7 @@
 
 </form> <br>
 
-<form action="processForm2" method = "post">
+<form action="addEntertainment" method = "post">
 
     Type: Entertainment <br>
     Name: <input type="text" name="name"> <br>

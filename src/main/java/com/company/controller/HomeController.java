@@ -1,9 +1,9 @@
 package com.company.controller;
 
-
 import com.company.entity.EntertainmentEntity;
 import com.company.entity.FoodEntity;
 import com.company.entity.RetailEntity;
+import com.company.models.PlacesCount;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,18 +22,19 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
-    @RequestMapping("/")
 
-    public ModelAndView helloWorld() {
+//    Landing Page
+    @RequestMapping("/")
+    public ModelAndView getMainPage() {
         FBConnection fbConnection = new FBConnection();
+
         return new
                 ModelAndView("mainpage", "message", fbConnection.getFBAuthUrl());
-
     }
 
-    @RequestMapping("welcome2")
-
-    public ModelAndView helloWorld2(@RequestParam("code") String code) {
+//    @RequestMapping("welcome2")
+//    Facebook Login method
+    public ModelAndView fbLogin(@RequestParam("code") String code) {
         if (code == null || code.equals("")) {
             throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
         }
@@ -46,59 +47,61 @@ public class HomeController {
         String out = "";
         out = out.concat("<div> Welcome " +fbProfileData.get("name"));
         out = out.concat("<div> Your Email: " + fbProfileData.get("email"));
+
         return new
                 ModelAndView("welcome2", "message", "");
-
     }
 
+//    Mapping for plan trip page
     @RequestMapping("plan")
-
-    public ModelAndView helloWorld2() {
+    public ModelAndView  planTrip() {
 
         return new
                 ModelAndView("plantrip", "cList", "hello world");
-
     }
 
+//    Mapping for direction
     @RequestMapping("direction")
-
     public ModelAndView getDirection() {
 
         return new
                 ModelAndView("direction", "message", "");
-
-
     }
 
+//     Mapping for about page
     @RequestMapping("about")
-
     public ModelAndView helloWorld3() {
 
         return new
                 ModelAndView("about", "cList", "hello world");
-
     }
 
+//    Mapping for safety page
     @RequestMapping("safety")
-
     public ModelAndView helloWorld4() {
 
         return new
                 ModelAndView("safety", "cList", "");
-
     }
 
-    public ArrayList<EntertainmentEntity> getAllEntertainment(int stationID) {
-
+//    Method for generic sessions
+    public Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
         SessionFactory sessionFactory = cfg.buildSessionFactory();
 
-        Session selectEntertainment = sessionFactory.openSession();
+        Session selectSession = sessionFactory.openSession();
 
-        selectEntertainment.beginTransaction();
+        selectSession.beginTransaction();
+        return selectSession;
+    }
 
-        Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
+//    Method to get all entertainment according to station
+    public ArrayList<EntertainmentEntity> getAllEntertainment(int stationID) {
+
+        Session selectSession = getSession();
+
+        Criteria c = selectSession.createCriteria(EntertainmentEntity.class);
 
         c.add(Restrictions.like("stationId", stationID));
 
@@ -107,17 +110,12 @@ public class HomeController {
         return entertainmentList;
     }
 
+    //    Method to get all retail according to station
     public ArrayList<RetailEntity> getAllRetail(int stationID) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Session selectSession = getSession();
 
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        Session selectRetail = sessionFactory.openSession();
-
-        selectRetail.beginTransaction();
-
-        Criteria c = selectRetail.createCriteria(RetailEntity.class);
+        Criteria c = selectSession.createCriteria(RetailEntity.class);
 
         c.add(Restrictions.like("stationId", stationID));
 
@@ -126,17 +124,12 @@ public class HomeController {
         return retailList;
     }
 
+//    Method to get all food according to station
     public ArrayList<FoodEntity> getAllFood(int stationID) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Session selectSession = getSession();
 
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        Session selectFood = sessionFactory.openSession();
-
-        selectFood.beginTransaction();
-
-        Criteria c = selectFood.createCriteria(FoodEntity.class);
+        Criteria c = selectSession.createCriteria(FoodEntity.class);
 
         c.add(Restrictions.like("stationId", stationID));
 
@@ -145,8 +138,8 @@ public class HomeController {
         return foodlist;
     }
 
+//    Mapping for listing all venues around station
     @RequestMapping("getStation")
-
     public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
 
         List<FoodEntity> foodList = getAllFood(stationID);
@@ -159,29 +152,23 @@ public class HomeController {
         model.put("retail", retailList);
 
         return new ModelAndView("displayChoice", "model", model);
-
     }
 
+//    method that returns count -- no longer in use
     /*public Long getQuery() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFactory = cfg.buildSessionFactory();
         Session selectFood = sessionFactory.openSession();
-
         selectFood.beginTransaction();
-
         //Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
-
        // c.add(Restrictions.like("stationId", stationID));
-
-
         Query query = selectFood.createQuery(
                 "select count(stationId) from FoodEntity  where stationId=1");
         Long count = (Long)query.uniqueResult();
         return count;
     }*/
 
-
-
+//    Function for Option 2 popular venue around station
     public ArrayList<PlacesCount> getActivity(int y) throws ClassNotFoundException, SQLException {
         //selecting the appropriate query based on what the user chose in option 3 and
         // returns an arrayList.
@@ -205,21 +192,15 @@ public class HomeController {
             "order by Quantity desc, retail.stationID asc";
         }
 
-
         String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
         String userName = "root";
         String passWord = "group5qline";
-
         Class.forName("com.mysql.jdbc.Driver");
-
         Connection con = DriverManager.getConnection(url,userName,passWord);
-
         Statement st = con.createStatement();
-
-
         ResultSet rs = st.executeQuery(query);
-        ArrayList<PlacesCount> list = new ArrayList<PlacesCount>();
 
+        ArrayList<PlacesCount> list = new ArrayList<PlacesCount>();
 
         while(rs.next()) {
             int stationID = rs.getInt("stationID");
@@ -228,14 +209,13 @@ public class HomeController {
             PlacesCount temp = new PlacesCount(stationID, stattionname, quantity);
             list.add(temp);
         }
-
         st.close();
         con.close();
         return list;
     }
 
+//    Mapping for option 2 popular venue
     @RequestMapping("getFromCategory")
-
     public ModelAndView returnEnt(@RequestParam("activity") int x) throws SQLException, ClassNotFoundException {
         ArrayList<PlacesCount> getList = getActivity(x);
 

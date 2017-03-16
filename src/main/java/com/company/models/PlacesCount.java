@@ -1,8 +1,5 @@
-package com.company.controller;
+package com.company.models;
 
-/**
- * Created by Mike on 3/16/2017.
- */
 public class PlacesCount {
     private int StationID;
     private String StattionName;

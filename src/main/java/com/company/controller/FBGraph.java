@@ -10,9 +10,6 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by kamel on 3/6/2017.
- */
 public class FBGraph {
     private String accessToken;
 
