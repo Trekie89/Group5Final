@@ -123,7 +123,7 @@
         <option value="42.357, -83.064">Warren</option>
         <option value="42.361, -83.067">Ferry</option>
         <option value="42.366, -83.071">Amsterdam</option>
-        <option value="11">Amtrak</option>
+        <option value="42.369, -83.072">Amtrak</option>
         <option value="42.370, -83.073">Grand Station</option>
     </select>
     <br/>
