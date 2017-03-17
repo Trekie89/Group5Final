@@ -41,7 +41,7 @@
 
 </table> <br>
 
-<a href = "plan">Go back to main</a>
+<a href = "plan">Go back to choices</a>
 
 </body>
 </html>

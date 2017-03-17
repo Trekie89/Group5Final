@@ -84,6 +84,24 @@ public class HomeController {
                 ModelAndView("safety", "cList", "");
     }
 
+//    Mapping for new User
+    @RequestMapping("register")
+    public ModelAndView getInfo() {
+
+        return new
+                ModelAndView("newUser", "message", "");
+    }
+
+    //    Mapping for login
+    @RequestMapping("login")
+    public ModelAndView login() {
+
+        FBConnection fbConnection = new FBConnection();
+
+        return new
+                ModelAndView("loginPage", "message", fbConnection.getFBAuthUrl());
+    }
+
 //    Method for generic sessions
     public Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");

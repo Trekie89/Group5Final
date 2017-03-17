@@ -87,7 +87,7 @@
 
 </form> <br>
 
-<a href = "mainpage">Go back to main</a>
+<a href = "/">Go back to main</a>
 
 </body>
 </html>

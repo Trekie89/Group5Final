@@ -65,7 +65,7 @@
     <div class="text-vertical-center">
         <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
-        <a href="${message}" class="btn btn-dark btn-lg">Login with Facebook</a>
+        <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
     </div>
 </header>
 

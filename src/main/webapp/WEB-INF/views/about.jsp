@@ -58,7 +58,7 @@
 
 <img src="http://www.gannett-cdn.com/-mm-/46dc15b9352d46e344f7d1b7f18e594342e95f6f/c=102-0-2230-1600&r=x393&c=520x390/local/-/media/2016/10/11/DetroitFreePress/DetroitFreePress/636117958072818073-QLINE-101116-rhb14.jpg" alt="QlinePicture">
 
-<a href = "mainpage">Go back to main</a>
+<a href = "/">Go back to main</a>
 
 </body>
 </html>
