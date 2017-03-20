@@ -108,14 +108,14 @@
 
                 <table border="1">
                     <tr>
-                        <th>Station ID</th>
+
                         <th>Station Name</th>
-                        <th>Quantity</th>
-                        <th>See Station</th>
+                        <th>Venues nearby</th>
+                        <th>See Station Info</th>
                     </tr>
                     <c:forEach var="station" items="${nearby}">
                         <tr>
-                            <td>${station.stationID}</td>
+
                             <td>${station.stattionName}</td>
                             <td>${station.quantity}</td>
                             <td>  <form action="getStation" method="get">

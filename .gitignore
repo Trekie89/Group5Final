@@ -17,3 +17,5 @@ target/
 
 *.class
 hibernate.cfg.xml
+
+keys.java

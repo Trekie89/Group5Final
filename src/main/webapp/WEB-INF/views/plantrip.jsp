@@ -142,12 +142,12 @@
 
                 <h1> Option 2</h1>
 
-                <p> I know what I want to do, where is the closest station</p>
+                <p> I know what I want to do, where is the closest station?</p>
                 <form action="getFromCategory" method="get">
 
                     <select name="activity" onchange="this.form.submit()">
                         <option value="" disabled="disabled" selected="selected">Please select a activity</option>
-                        <option value=1 >Food</option>
+                        <option value=1 >Restaurants</option>
                         <option value=2>Entertainment</option>
                         <option value=3>Retail</option>
                     </select>
@@ -159,7 +159,7 @@
 
                     <h1> Option 3</h1>
 
-                    <p> I'm at a station, what can I do</p>
+                    <p> I'm at a station, what can I do?</p>
 
                     <form action="getStation" method="get">
 

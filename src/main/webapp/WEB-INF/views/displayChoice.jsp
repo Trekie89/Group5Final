@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
 
-                <h1> Food Nearby </h1> <br>
+                <h1> Restaurants Nearby </h1> <br>
                 <table border=1>
 
                     <c:forEach var="element" items="${model.food}">

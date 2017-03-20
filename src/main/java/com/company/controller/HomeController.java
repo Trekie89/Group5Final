@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class HomeController{
 
 //    Landing Page
     @RequestMapping("/")
@@ -319,13 +319,13 @@ public class HomeController {
     public String getWeather2(Model model) throws IOException {
 
 
-
+        String key = keys.weatherKey;
 
         HttpClient http = HttpClientBuilder.create().build();
 
         HttpHost host2 = new HttpHost("api.wunderground.com", 80, "http");
 
-        HttpGet getPage2 = new HttpGet("/api/5897003772540276/conditions/q/MI/Detroit.json");
+        HttpGet getPage2 = new HttpGet("/api/"+key+"/conditions/q/MI/Detroit.json");
 
 
         HttpResponse resp2 = http.execute(host2, getPage2);
