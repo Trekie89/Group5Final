@@ -56,7 +56,17 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        .container {
+            width: 250px;
+            clear: both;
+        }
+        .container input {
+            width: 100%;
+            clear: both;
+        }
 
+    </style>
 </head>
 
 <body>
@@ -105,13 +115,14 @@
                 <form action="validate" method = "post">
 
                     User Name: <input type="text" name="userLogin"><br>
-                    Password: <input type="password" name="password"><br>
+                    Password:  <input type="password" name="password"><br>
                     <input type="submit" value="submit">
                 </form>
 
                 <a href = "${message}">Facebook Login!</a>
 
-                <a href = "register">Register Here!</a>
+                <a href = "register">Register Here!</a><br>
+                <a href = "/">Go back to main</a>
 
 
             </div>

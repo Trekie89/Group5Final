@@ -163,8 +163,8 @@
 
 <!-- Portfolio -->
 <section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="row">
+    <div class="container" style="align-content: center">
+        <div class="row" style="align-content: center">
             <div class="col-lg-10 col-lg-offset-1 text-center">
                 <h2>Map of the Stations</h2>
                 <hr class="small">
