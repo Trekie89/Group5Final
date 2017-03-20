@@ -326,7 +326,7 @@ public class HomeController {
 
         HttpHost host2 = new HttpHost("api.wunderground.com", 80, "http");
 
-        HttpGet getPage2 = new HttpGet("/api/your_api_key/conditions/q/MI/Detroit.json");
+        HttpGet getPage2 = new HttpGet("/api//conditions/q/MI/Detroit.json");
 
 
         HttpResponse resp2 = http.execute(host2, getPage2);
