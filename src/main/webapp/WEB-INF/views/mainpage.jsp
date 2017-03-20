@@ -63,13 +63,13 @@
 
 <!-- Header -->
 <header id="top" class="header">
-    <div style="float: top;background-color: transparent;text-align: center;height:175px;width:180px;border:1px solid blue">
+    <div style="background-color: transparent; position: absolute;text-align: center;height:175px;width:180px;border:1px solid black">
         <h4>Temperature: ${showTemp} Degrees</h4>
         <h4>Wind Speed: ${showWind} Mph</h4>
         <h4>Current Conditions: ${currentWeather}</h4>
         <img src = "${Gif}">
     </div>
-    <div class="text-vertical-center">
+    <div class="text-vertical-center"style="position: relative">
         <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
         <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
