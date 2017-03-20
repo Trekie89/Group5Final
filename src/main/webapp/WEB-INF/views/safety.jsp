@@ -50,7 +50,7 @@
             <a href="about" onclick=$("#menu-close").click();>About</a>
         </li>
         <li>
-            <a href="safety" onclick=$("#menu-close").click();>Safety</a>
+            <a href="safety" onclick=$("#menu-close").click();>Qline FAQ's</a>
         </li>
         <li>
             <a href="addActivity" onclick=$("#menu-close").click();>Add Activity</a>
@@ -70,28 +70,52 @@
     </div>
 </header>
 
-<!-- About -->
-<section id="about" class="about">
+<!-- FAQ -->
+<section id="FAQ" class="FAQ">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
 
-                <h1> QLine Safety Tips </h1><br>
-                <hr>
-                <ul>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                    <li>Somthing blah blah blah blah blah blah blah blah</li>
-                </ul><br>
-
+                <h1> QLine FAQ's </h1><br>
+               <p> <h3>How does the streetcar project differ from the Detroit People Mover?</h3><br>
+                   The Detroit People Mover is an elevated circulator system within Downtown Detroit. The Woodward Avenue<br>
+                  streetcar is a linear system co-mingled with vehicular traffic that will travel north and south along<br>
+                  Woodward Avenue with 12 stops between Congress Street at the south end and West Grand Boulevard at the<br>
+                  north end.  They are complementary systems to move residents, visitors and employees.<br>
+                <br>
+                <h3>How much does it cost to operate the streetcar?</h3><br>
+                It is estimated the costs to operate and maintain the modern streetcar system will be approximately<br>
+                $5.5-million each year.  M-1 RAIL has raised enough funds to operate it for up-to 10 years.  Operations<br>
+                will be supplemented by revenues from fare box and advertising.<br>
+                <br>
+                <h3>How will existing bus service along Woodward Avenue be affected by the streetcar?</h3><br>
+                Bus service will not be affected. For example, Detroit Department of Transportation (DDOT) Route 53<br>
+                (Woodward Avenue) will continue to operate as usual.  Route 53 service will continue with established<br>
+                headways along the corridor during the day and after the evening rush hour.  SMART Buses will also<br>
+                continue to operate.<br>
+                <br>
+                <h3>How will I get to the Rosa Parks Transit Center from the streetcar?</h3><br>
+                One way is to transfer to the Detroit People Mover at the Grand Circus Park station and get off at the<br>
+                Times Square People Mover Station adjacent to the Rosa Parks Transit Center.  Another is to walk or bike<br>
+                three blocks along Michigan Avenue from Campus Martius.<br>
+                <br>
+                <h3>How will I know when the streetcar will stop when I am driving/riding behind it?</h3><br>
+                Each streetcar vehicle will have brake lights in the back to inform drivers and cyclists when the streetcar<br>
+                will stop at a station.<br>
+                <h3>What is a modern streetcar?</h3><br>
+                A sleek 2 or 3 car vehicle that travels along a street traveled on vehicular traffic on a fixed rail.<br>
+                Other cities that use the modern streetcar system include San Francisco, Seattle and Portland.<br>
+                <h3>What is the advantage of having a streetcar in mixed-traffic versus a traditional bus?</h3><br>
+                The streetcar will have designated station locations, level boarding and pre-paid tickets. This reduces<br>
+                the amount of time needed for people to board the streetcar. In addition, the streetcar will have transit<br>
+                phases, or an additional, dedicated light in some locations to allow it to easily go through signalized<br>
+                intersections.
+                <br>
+                <br>
+                Please click <a href="http://m-1rail.com/faq/">here</a>  for a full list of the Qline FAQ's
+                </p>
                 <a href = "/">Go back to main</a>
-
+                <p> @copyright M-1 Rail (March 20, 2017). M-1 Rail FAQ's. Retrieved from http://m-1rail.com/faq/</p><br>
             </div>
         </div>
         <!-- /.row -->

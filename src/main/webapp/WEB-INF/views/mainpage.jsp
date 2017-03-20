@@ -132,7 +132,7 @@
                                 <i class="fa fa-flask fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Safety</strong>
+                                <strong>Qline FAQ's</strong>
                             </h4>
                             <p>Make sure you know what to do!</p>
                             <a href="safety" class="btn btn-light">Learn More</a>
