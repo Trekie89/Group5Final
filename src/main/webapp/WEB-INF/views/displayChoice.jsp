@@ -157,7 +157,7 @@
 
                 </table> <br>
 
-                <a href = "plan">Go back to choices</a>
+                <a href = "/">Go back to main</a>
 
             </div>
         </div>

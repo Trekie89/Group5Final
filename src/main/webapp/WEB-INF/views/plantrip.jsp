@@ -152,9 +152,6 @@
                         <option value=3>Retail</option>
                     </select>
 
-                    <form>
-
-
                     </form>
 
                     <h1> Option 3</h1>
@@ -178,11 +175,9 @@
                             <option value="11">Amtrak</option>
                             <option value="12">Grand Station</option>
                         </select>
-
-                    </form> <br>
-
+                    </form>
+                    <br>
                 <a href = "plan">Go back to choices</a>
-
             </div>
         </div>
         <!-- /.row -->
