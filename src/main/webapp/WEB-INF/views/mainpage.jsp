@@ -35,6 +35,12 @@
 <body>
 
 <!-- Navigation -->
+<div style="float: left;background-color: linen;text-align: center;height:140px;width:180px">
+    <h4>${showTemp}</h4>
+    <h4>${showWind}</h4>
+    <h4>${currentWeather}</h4>
+    <img src = "${Gif}">
+</div>
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 <nav id="sidebar-wrapper" style = "color: white">
     <ul class="sidebar-nav">

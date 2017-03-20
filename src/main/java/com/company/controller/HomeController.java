@@ -4,16 +4,27 @@ import com.company.entity.EntertainmentEntity;
 import com.company.entity.FoodEntity;
 import com.company.entity.RetailEntity;
 import com.company.models.PlacesCount;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpHost;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -239,6 +250,50 @@ public class HomeController {
 
         return new ModelAndView("entertainmentNear", "nearby", getList);
     }
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+
+    public String getWeather2(Model model) throws IOException {
+
+
+
+
+        HttpClient http = HttpClientBuilder.create().build();
+
+        HttpHost host2 = new HttpHost("api.wunderground.com", 80, "http");
+
+        HttpGet getPage2 = new HttpGet("/api/your_api_key/conditions/q/MI/Detroit.json");
+
+
+        HttpResponse resp2 = http.execute(host2, getPage2);
+
+
+        String jsonString = EntityUtils.toString(resp2.getEntity());
+
+        JSONObject json = new JSONObject(jsonString);
+
+        int temp= 0;
+        double wind = 0.0;
+        String weather = "";
+        String showWeather = "";
+
+        weather=json.getJSONObject("current_observation").getString("weather");
+        wind=json.getJSONObject("current_observation").getDouble("wind_mph");
+        temp=json.getJSONObject("current_observation").getInt("temp_f");
+        showWeather=json.getJSONObject("current_observation").getString("icon_url");
+
+
+        model.addAttribute("showTemp", temp);
+        model.addAttribute("showWind",wind);
+        model.addAttribute("currentWeather",weather);
+        model.addAttribute("Gif",showWeather);
+
+        return "mainpage";
+
+
+    }
+
 
 
 
