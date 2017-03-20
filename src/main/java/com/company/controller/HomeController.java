@@ -134,8 +134,7 @@ public class HomeController {
 
 
     }
-    private boolean logChck(String username, String password)
-    {
+    private boolean logChck(String username, String password) {
         String query;
         boolean login = false;
 
@@ -147,17 +146,18 @@ public class HomeController {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url,userName,passWord);
 
-            query = "SELECT userLogin, password FROM userinfo WHERE userLogin = ? && password = ?";
+            query = "SELECT count(*) FROM userinfo WHERE userLogin = ? && password = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.executeQuery();
             ResultSet rs = ps.executeQuery();
 
-            String checkUser = rs.getString(1);
-            String checkPass = rs.getString(2);
+            rs.next();
+            int checkUser = rs.getInt(1);
 
-            if((checkUser.equals(username)) && (checkPass.equals(password)))
+
+            if(checkUser==1)
             {
                 login = true;
             }
@@ -170,9 +170,8 @@ public class HomeController {
         }
 
         catch (Exception err) {
-            System.out.println("ERROR: " + err.getCause());
+            System.out.println("ERROR: " + err.toString());
         }
-
         return login;
     }
 
@@ -326,7 +325,7 @@ public class HomeController {
 
         HttpHost host2 = new HttpHost("api.wunderground.com", 80, "http");
 
-        HttpGet getPage2 = new HttpGet("/api//conditions/q/MI/Detroit.json");
+        HttpGet getPage2 = new HttpGet("/api/5897003772540276/conditions/q/MI/Detroit.json");
 
 
         HttpResponse resp2 = http.execute(host2, getPage2);
