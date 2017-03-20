@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.entity.EntertainmentEntity;
+import com.company.entity.FbuserinfoEntity;
 import com.company.entity.FoodEntity;
 import com.company.entity.RetailEntity;
 import com.company.models.PlacesCount;
@@ -14,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.json.JSONObject;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,22 +48,92 @@ public class HomeController{
 
 //    @RequestMapping("welcome2")
 //    Facebook Login method
-    public ModelAndView fbLogin(@RequestParam("code") String code) {
-        if (code == null || code.equals("")) {
-            throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
+@RequestMapping("welcome2")
+public String fbLogin(@RequestParam("code") String code,
+                      HttpServletResponse response, Model model) {
+    if (code == null || code.equals("")) {
+        throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
+    }
+    FBConnection fbConnection = new FBConnection();
+    String accessToken = fbConnection.getAccessToken(code);
+
+    FBGraph fbGraph = new FBGraph(accessToken);
+    String graph = fbGraph.getFBGraph();
+    Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
+
+    String id = fbProfileData.get("id").toString();
+//        String fname = fbProfileData.get("first_name").toString();
+//        String lname = fbProfileData.get("last_name").toString();
+//        String email = fbProfileData.get("email").toString();
+
+//        Cookie userCookie = new Cookie("userTag", id);
+//        userCookie.setMaxAge(-1);
+//        response.addCookie(userCookie);
+
+//        model.addAttribute("id", id);
+//        model.addAttribute("first_name", fname);
+//        model.addAttribute("last_name", lname);
+//        model.addAttribute("email", email);
+
+    if (fbChck(id) == false) {
+
+        Session selectSession = getSession();
+        Transaction tx = selectSession.beginTransaction();
+
+        FbuserinfoEntity fbUser = new FbuserinfoEntity();
+
+        fbUser.setFbId(fbProfileData.get("id").toString());
+        fbUser.setFirstName(fbProfileData.get("first_name").toString());
+        fbUser.setLastName(fbProfileData.get("last_name").toString());
+        fbUser.setEmail(fbProfileData.get("email").toString());
+
+        selectSession.save(fbUser);
+        tx.commit();
+        selectSession.close();
+
+
+        return "confirmpage";
+    } else {
+        return "mainpage";
+    }
+}
+
+    private boolean fbChck(String id) {
+        String query;
+        boolean login = false;
+
+        try {
+
+            String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
+            String userName = "root";
+            String passWord = "group5qline";
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url,userName,passWord);
+
+            query = "SELECT count(*) FROM fbuserinfo WHERE fbId = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            int checkUser = rs.getInt(1);
+
+            if (checkUser == 1) {
+                login = true;
+            } else {
+                login = false;
+            }
+
+            con.close();
         }
-        FBConnection fbConnection = new FBConnection();
-        String accessToken = fbConnection.getAccessToken(code);
 
-        FBGraph fbGraph = new FBGraph(accessToken);
-        String graph = fbGraph.getFBGraph();
-        Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
-        String out = "";
-        out = out.concat("<div> Welcome " +fbProfileData.get("name"));
-        out = out.concat("<div> Your Email: " + fbProfileData.get("email"));
+        catch(Exception err){
+            System.out.println("ERROR: " + err.getCause());
+        }
 
-        return new
-                ModelAndView("welcome2", "message", "");
+        return login;
+
     }
 
 //    Mapping for plan trip page
