@@ -64,8 +64,8 @@
 <!-- Header -->
 <header id="top" class="header">
     <div style="background-color: transparent; position: absolute;text-align: center;height:175px;width:180px;border:1px solid black">
-        <h4>Temperature: ${showTemp} Degrees</h4>
-        <h4>Wind Speed: ${showWind} Mph</h4>
+        <h4>Temperature: ${showTemp} &#8457;</h4>
+        <h4>Wind Speed: ${showWind} m.p.h</h4>
         <h4>Current Conditions: ${currentWeather}</h4>
         <img src = "${Gif}">
     </div>
