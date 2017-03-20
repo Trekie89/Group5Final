@@ -38,19 +38,19 @@ import java.util.Map;
 public class HomeController{
 
 //    Landing Page
-    @RequestMapping("/")
-    public ModelAndView getMainPage() {
-        FBConnection fbConnection = new FBConnection();
+@RequestMapping("/")
+public ModelAndView getMainPage() {
+    FBConnection fbConnection = new FBConnection();
 
-        return new
-                ModelAndView("mainpage", "message", fbConnection.getFBAuthUrl());
-    }
+    return new
+            ModelAndView("mainpage", "message", "");
+}
 
 //    @RequestMapping("welcome2")
 //    Facebook Login method
 @RequestMapping("welcome2")
-public String fbLogin(@RequestParam("code") String code,
-                      HttpServletResponse response, Model model) {
+public ModelAndView fbLogin(@RequestParam("code") String code,
+                            HttpServletResponse response, Model model) {
     if (code == null || code.equals("")) {
         throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
     }
@@ -62,7 +62,7 @@ public String fbLogin(@RequestParam("code") String code,
     Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
 
     String id = fbProfileData.get("id").toString();
-//        String fname = fbProfileData.get("first_name").toString();
+//    String fname = fbProfileData.get("first_name").toString();
 //        String lname = fbProfileData.get("last_name").toString();
 //        String email = fbProfileData.get("email").toString();
 
@@ -92,9 +92,11 @@ public String fbLogin(@RequestParam("code") String code,
         selectSession.close();
 
 
-        return "confirmpage";
+        return new
+                ModelAndView("confirmpage", "message", "Thank you for logging in");
     } else {
-        return "mainpage";
+        return new
+                ModelAndView("mainpage2", "message", fbConnection.getFBAuthUrl());
     }
 }
 
@@ -196,14 +198,16 @@ public String fbLogin(@RequestParam("code") String code,
 
         if ( result == true) {
 
-            confirm = "Login Successful";
+            return new
+                    ModelAndView("mainpage2", "message", "");
         }
         else {
             confirm = "Not a valid entry please try again.";
+            return new
+                    ModelAndView("confirmpage", "message", confirm);
         }
 
-        return new
-                ModelAndView("confirmpage", "message", confirm);
+
 
 
     }
