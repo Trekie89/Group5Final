@@ -17,15 +17,14 @@
     in partnership with local government, the State of Michigan, and U.S. Department of Transportation.<br>
     <br>
 
-    Mission<br>
+    <strong>Mission</strong><br>
     <br>
 
     The mission of M-1 RAIL is to create a catalyst for investment, economic development and urban renewal <br>
     that positively impacts the entire region through the construction of a streetcar circulator system running <br>
     along and connecting Woodward Avenue from the Riverfront to the New Center and North End neighborhoods.<br>
     <br>
-
-    Vision <br>
+        <strong>Vision</strong><br>
     <br>
 
     The M-1 RAIL Woodward Avenue Streetcar project is envisioned to be one element of a future modern,<br>
@@ -36,7 +35,7 @@
     Business District, Midtown, New Center and North End.<br>
     <br>
 
-    Community Engagement <br>
+        <strong>Community Engagement</strong><br>
     <br>
 
     M-1 RAIL values working closely with community groups and residents throughout the project. <br>
