@@ -102,10 +102,11 @@
         <div class="row">
             <div class="col-lg-12 text-center">
 
-                <form action="login" method = "post">
+                <form action="validate" method = "post">
 
                     User Name: <input type="text" name="userLogin"><br>
-                    Password: <input type="text" name="password"><br>
+                    Password: <input type="password" name="password"><br>
+                    <input type="submit" value="submit">
                 </form>
 
                 <a href = "${message}">Facebook Login!</a>
