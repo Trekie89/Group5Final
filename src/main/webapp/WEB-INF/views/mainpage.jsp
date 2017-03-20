@@ -35,12 +35,7 @@
 <body>
 
 <!-- Navigation -->
-<div style="float: left;background-color: linen;text-align: center;height:140px;width:180px">
-    <h4>${showTemp}</h4>
-    <h4>${showWind}</h4>
-    <h4>${currentWeather}</h4>
-    <img src = "${Gif}">
-</div>
+
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 <nav id="sidebar-wrapper" style = "color: white">
     <ul class="sidebar-nav">
@@ -68,6 +63,12 @@
 
 <!-- Header -->
 <header id="top" class="header">
+    <div style="float: top;background-color: transparent;text-align: center;height:175px;width:180px;border:1px solid blue">
+        <h4>Temperature: ${showTemp} Degrees</h4>
+        <h4>Wind Speed: ${showWind} Mph</h4>
+        <h4>Current Conditions: ${currentWeather}</h4>
+        <img src = "${Gif}">
+    </div>
     <div class="text-vertical-center">
         <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
