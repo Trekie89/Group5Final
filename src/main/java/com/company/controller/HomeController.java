@@ -113,6 +113,69 @@ public class HomeController {
                 ModelAndView("loginPage", "message", fbConnection.getFBAuthUrl());
     }
 
+    @RequestMapping("validate")
+    public ModelAndView validateUserPass(@RequestParam ("userLogin") String userLogin,
+                                         @RequestParam("password") String pass) {
+
+        String confirm;
+
+        Boolean result = logChck(userLogin, pass);
+
+        if ( result == true) {
+
+            confirm = "Login Successful";
+        }
+        else {
+            confirm = "Not a valid entry please try again.";
+        }
+
+        return new
+                ModelAndView("confirmpage", "message", confirm);
+
+
+    }
+    private boolean logChck(String username, String password)
+    {
+        String query;
+        boolean login = false;
+
+        try {
+
+            String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
+            String userName = "root";
+            String passWord = "group5qline";
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url,userName,passWord);
+
+            query = "SELECT userLogin, password FROM userinfo WHERE userLogin = ? && password = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
+
+            String checkUser = rs.getString(1);
+            String checkPass = rs.getString(2);
+
+            if((checkUser.equals(username)) && (checkPass.equals(password)))
+            {
+                login = true;
+            }
+            else
+            {
+                login = false;
+            }
+
+            con.close();
+        }
+
+        catch (Exception err) {
+            System.out.println("ERROR: " + err.getCause());
+        }
+
+        return login;
+    }
+
 //    Method for generic sessions
     public Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");

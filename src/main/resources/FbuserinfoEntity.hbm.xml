@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.entity.FbuserinfoEntity" table="fbuserinfo" schema="qline">
+        <id name="fbId">
+            <column name="fbId" sql-type="varchar(50)" length="50"/>
+        </id>
+        <property name="firstName">
+            <column name="firstName" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="lastName">
+            <column name="lastName" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
