@@ -1,9 +1,6 @@
 package com.company.controller;
 
-import com.company.entity.EntertainmentEntity;
-import com.company.entity.FoodEntity;
-import com.company.entity.RetailEntity;
-import com.company.entity.UserinfoEntity;
+import com.company.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -92,6 +89,30 @@ public class FormController {
         newEntertainment.setStationId(stationId);
 
         session.save(newEntertainment);
+        tx.commit();
+        session.close();
+
+        return new
+                ModelAndView("confirmpage", "message", "Thank you for submitting");
+    }
+
+    @RequestMapping("addLodging")
+    public ModelAndView getForm3(@RequestParam("name") String name,
+                                 @RequestParam("address") String address,
+                                 @RequestParam("website") String website,
+                                 @RequestParam("stationId") int stationId) {
+
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+
+        LodgingEntity newLodging = new LodgingEntity();
+
+        newLodging.setName(name);
+        newLodging.setAddress(address);
+        newLodging.setWebsite(website);
+        newLodging.setStationId(stationId);
+
+        session.save(newLodging);
         tx.commit();
         session.close();
 
