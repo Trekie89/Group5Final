@@ -104,9 +104,7 @@
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-cloud fa-stack-1x text-primary"></i>
                             </span>
-                            <h4>
-                                <strong>Plan Trip</strong>
-                            </h4>
+
                             <p>Choose how to plan your trip</p>
                             <a href="plan" class="btn btn-light">Plan</a>
                         </div>
@@ -164,7 +162,7 @@
 <!-- Portfolio -->
 <section id="portfolio" class="portfolio">
     <div class="container" style="align-content: center">
-        <div class="row" >
+        <div class="row" style="align-content: center">
             <div class="col-lg-10 col-lg-offset-1 text-center">
                 <h2>Map of the Stations</h2>
                 <hr class="small">

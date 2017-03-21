@@ -119,7 +119,7 @@
                     Password: <input type="password" name="password"><br>
                     <input type="submit" value="submit">
                 </form>
-
+                <br><a href = "/">Go back to main</a>
 
             </div>
         </div>
