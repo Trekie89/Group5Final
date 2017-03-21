@@ -3,11 +3,9 @@ package com.company.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 
 public class FBConnection {
     public static final String FB_APP_ID = "1818062278469925";
@@ -19,10 +17,10 @@ public class FBConnection {
     public String getFBAuthUrl() {
         String fbLoginUrl = "";
 
-            fbLoginUrl = "http://www.facebook.com/dialog/oauth?" + "client_id="
-                    + FBConnection.FB_APP_ID + "&redirect_uri="
-                   + REDIRECT_URI
-                    + "&scope=email";
+        fbLoginUrl = "http://www.facebook.com/dialog/oauth?" + "client_id="
+                + FBConnection.FB_APP_ID + "&redirect_uri="
+                + REDIRECT_URI
+                + "&scope=email";
 
         return fbLoginUrl;
     }
@@ -30,10 +28,10 @@ public class FBConnection {
     public String getFBGraphUrl(String code) {
         String fbGraphUrl = "";
 
-            fbGraphUrl = "https://graph.facebook.com/oauth/access_token?"
-                    + "client_id=" + FBConnection.FB_APP_ID + "&redirect_uri="
-                    + REDIRECT_URI
-                    + "&client_secret=" + FB_APP_SECRET + "&code=" + code;
+        fbGraphUrl = "https://graph.facebook.com/oauth/access_token?"
+                + "client_id=" + FBConnection.FB_APP_ID + "&redirect_uri="
+                + REDIRECT_URI
+                + "&client_secret=" + FB_APP_SECRET + "&code=" + code;
 
         return fbGraphUrl;
     }
