@@ -1,35 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>Title</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<table border="1">--%>
-<%--<tr>--%>
-<%--<th>Station ID</th>--%>
-<%--<th>Station Name</th>--%>
-<%--<th>Quantity</th>--%>
-<%--<th>See Station</th>--%>
-<%--</tr>--%>
-<%--<c:forEach var="station" items="${nearby}">--%>
-<%--<tr>--%>
-<%--<td>${station.stationID}</td>--%>
-<%--<td>${station.stattionName}</td>--%>
-<%--<td>${station.quantity}</td>--%>
-<%--<td>  <form action="getStation" method="get">--%>
-<%--<button name="stationId" type="submit" value="${station.stationID}">Get Info</button>--%>
-<%--</form> </td>--%>
-<%--</tr>--%>
-<%--</c:forEach>--%>
-<%--</table>--%>
-
-<%--<a href = "plan">Go back to choices</a>--%>
-
-<%--</body>--%>
-<%--</html>--%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +66,6 @@
     <div class="text-vertical-center">
         <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
-        <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
     </div>
 </header>
 

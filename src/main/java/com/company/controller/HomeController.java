@@ -33,125 +33,26 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController{
+public class HomeController {
 
-//    Landing Page
-@RequestMapping("/")
-public ModelAndView getMainPage() {
-    FBConnection fbConnection = new FBConnection();
-
-    return new
-            ModelAndView("mainpage", "message", "");
-}
-
-//    @RequestMapping("welcome2")
-//    Facebook Login method
-@RequestMapping("welcome2")
-public ModelAndView fbLogin(@RequestParam("code") String code,
-                            HttpServletResponse response, Model model) {
-    if (code == null || code.equals("")) {
-        throw new RuntimeException("ERROR: Didn't get code parameter in callback.");
-    }
-    FBConnection fbConnection = new FBConnection();
-    String accessToken = fbConnection.getAccessToken(code);
-
-    FBGraph fbGraph = new FBGraph(accessToken);
-    String graph = fbGraph.getFBGraph();
-    Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
-
-    String id = fbProfileData.get("id").toString();
-//    String fname = fbProfileData.get("first_name").toString();
-//        String lname = fbProfileData.get("last_name").toString();
-//        String email = fbProfileData.get("email").toString();
-
-//        Cookie userCookie = new Cookie("userTag", id);
-//        userCookie.setMaxAge(-1);
-//        response.addCookie(userCookie);
-
-//        model.addAttribute("id", id);
-//        model.addAttribute("first_name", fname);
-//        model.addAttribute("last_name", lname);
-//        model.addAttribute("email", email);
-
-    if (fbChck(id) == false) {
-
-        Session selectSession = getSession();
-        Transaction tx = selectSession.beginTransaction();
-
-        FbuserinfoEntity fbUser = new FbuserinfoEntity();
-
-        fbUser.setFbId(fbProfileData.get("id").toString());
-        fbUser.setFirstName(fbProfileData.get("first_name").toString());
-        fbUser.setLastName(fbProfileData.get("last_name").toString());
-        fbUser.setEmail(fbProfileData.get("email").toString());
-
-        selectSession.save(fbUser);
-        tx.commit();
-        selectSession.close();
-
+    //    Landing Page
+    @RequestMapping("/")
+    public ModelAndView getMainPage() {
+        FBConnection fbConnection = new FBConnection();
 
         return new
-                ModelAndView("confirmpage", "message", "Thank you for logging in");
-    } else {
-        return new
-                ModelAndView("mainpage2", "message", fbConnection.getFBAuthUrl());
-    }
-}
-
-    private boolean fbChck(String id) {
-        String query;
-        boolean login = false;
-
-        try {
-
-            String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
-            String userName = "root";
-            String passWord = "group5qline";
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url,userName,passWord);
-
-            query = "SELECT count(*) FROM fbuserinfo WHERE fbId = ?";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, id);
-            ps.executeQuery();
-            ResultSet rs = ps.executeQuery();
-
-            rs.next();
-            int checkUser = rs.getInt(1);
-
-            if (checkUser == 1) {
-                login = true;
-            } else {
-                login = false;
-            }
-
-            con.close();
-        }
-
-        catch(Exception err){
-            System.out.println("ERROR: " + err.getCause());
-        }
-
-        return login;
-
+                ModelAndView("mainpage", "message", "");
     }
 
-    @RequestMapping("test")
-    public ModelAndView  testoutput() {
-
-        return new
-                ModelAndView("test", "anything", getAllLodging(2));
-    }
-
-//    Mapping for plan trip page
+    //    Mapping for plan trip page
     @RequestMapping("plan")
-    public ModelAndView  planTrip() {
+    public ModelAndView planTrip() {
 
         return new
                 ModelAndView("plantrip", "cList", "hello world");
     }
 
-//    Mapping for direction
+    //    Mapping for direction
     @RequestMapping("direction")
     public ModelAndView getDirection() {
 
@@ -159,7 +60,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
                 ModelAndView("direction", "message", "");
     }
 
-//     Mapping for about page
+    //     Mapping for about page
     @RequestMapping("about")
     public ModelAndView helloWorld3() {
 
@@ -167,7 +68,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
                 ModelAndView("about", "cList", "hello world");
     }
 
-//    Mapping for safety page
+    //    Mapping for safety page
     @RequestMapping("safety")
     public ModelAndView helloWorld4() {
 
@@ -175,7 +76,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
                 ModelAndView("safety", "cList", "");
     }
 
-//    Mapping for new User
+    //    Mapping for new User
     @RequestMapping("register")
     public ModelAndView getInfo() {
 
@@ -183,81 +84,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
                 ModelAndView("newUser", "message", "");
     }
 
-    //    Mapping for login
-    @RequestMapping("login")
-    public ModelAndView login() {
-
-        FBConnection fbConnection = new FBConnection();
-
-        return new
-                ModelAndView("loginPage", "message", fbConnection.getFBAuthUrl());
-    }
-
-    @RequestMapping("validate")
-    public ModelAndView validateUserPass(@RequestParam ("userLogin") String userLogin,
-                                         @RequestParam("password") String pass) {
-
-        String confirm;
-
-        Boolean result = logChck(userLogin, pass);
-
-        if ( result == true) {
-
-            return new
-                    ModelAndView("mainpage2", "message", "");
-        }
-        else {
-            confirm = "Not a valid entry please try again.";
-            return new
-                    ModelAndView("confirmpage", "message", confirm);
-        }
-
-
-
-
-    }
-    private boolean logChck(String username, String password) {
-        String query;
-        boolean login = false;
-
-        try {
-
-            String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
-            String userName = "root";
-            String passWord = "group5qline";
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url,userName,passWord);
-
-            query = "SELECT count(*) FROM userinfo WHERE userLogin = ? && password = ?";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.executeQuery();
-            ResultSet rs = ps.executeQuery();
-
-            rs.next();
-            int checkUser = rs.getInt(1);
-
-
-            if(checkUser==1)
-            {
-                login = true;
-            }
-            else
-            {
-                login = false;
-            }
-
-            con.close();
-        }
-
-        catch (Exception err) {
-            System.out.println("ERROR: " + err.toString());
-        }
-        return login;
-    }
-
-//    Method for generic sessions
+    //    Method for generic sessions
     public Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -269,7 +96,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return selectSession;
     }
 
-//    Method to get all entertainment according to station
+    //    Method to get all entertainment according to station
     public ArrayList<EntertainmentEntity> getAllEntertainment(int stationID) {
 
         Session selectSession = getSession();
@@ -297,7 +124,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return retailList;
     }
 
-//    Method to get all food according to station
+    //    Method to get all food according to station
     public ArrayList<FoodEntity> getAllFood(int stationID) {
 
         Session selectSession = getSession();
@@ -311,7 +138,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return foodlist;
     }
 
-//   Method to get all lodging according to station
+    //   Method to get all lodging according to station
     public ArrayList<LodgingEntity> getAllLodging(int stationID) {
 
         Session selectSession = getSession();
@@ -325,7 +152,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return lodginglist;
     }
 
-//    Mapping for listing all venues around station
+    //    Mapping for listing all venues around station
     @RequestMapping("getStation")
     public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
 
@@ -343,61 +170,47 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return new ModelAndView("displayChoice", "model", model);
     }
 
-//    method that returns count -- no longer in use
-    /*public Long getQuery() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session selectFood = sessionFactory.openSession();
-        selectFood.beginTransaction();
-        //Criteria c = selectEntertainment.createCriteria(EntertainmentEntity.class);
-       // c.add(Restrictions.like("stationId", stationID));
-        Query query = selectFood.createQuery(
-                "select count(stationId) from FoodEntity  where stationId=1");
-        Long count = (Long)query.uniqueResult();
-        return count;
-    }*/
-
-//    Function for Option 2 popular venue around station
+    //    Function for Option 2 popular venue around station
     public ArrayList<PlacesCount> getActivity(int y) throws ClassNotFoundException, SQLException {
         //selecting the appropriate query based on what the user chose in option 3 and
         // returns an arrayList.
         String query = "";
-        if(y==1) {
+        if (y == 1) {
             query = "SELECT food.stationID, stations.stattionName, sum(1) as Quantity\n" +
                     "FROM food INNER JOIN stations where food.stationID = stations.stationID\n" +
                     "group by food.stationID\n" +
                     "order by Quantity desc, food.stationID asc";
         }
-        if(y==2){
-            query = "SELECT entertainment.stationID, stations.stattionName, sum(1) as Quantity\n"+
-            "FROM entertainment INNER JOIN stations where entertainment.stationID = stations.stationID\n" +
-            "group by entertainment.stationID\n" +
-            "order by Quantity desc, entertainment.stationID asc";
+        if (y == 2) {
+            query = "SELECT entertainment.stationID, stations.stattionName, sum(1) as Quantity\n" +
+                    "FROM entertainment INNER JOIN stations where entertainment.stationID = stations.stationID\n" +
+                    "group by entertainment.stationID\n" +
+                    "order by Quantity desc, entertainment.stationID asc";
         }
-        if(y==3){
-            query = "SELECT retail.stationID, stations.stattionName, sum(1) as Quantity\n"+
-            "FROM retail INNER JOIN stations where retail.stationID = stations.stationID\n"+
-            "group by retail.stationID\n"+
-            "order by Quantity desc, retail.stationID asc";
+        if (y == 3) {
+            query = "SELECT retail.stationID, stations.stattionName, sum(1) as Quantity\n" +
+                    "FROM retail INNER JOIN stations where retail.stationID = stations.stationID\n" +
+                    "group by retail.stationID\n" +
+                    "order by Quantity desc, retail.stationID asc";
         }
-        if(y==4){
-            query = "SELECT lodging.stationID, stations.stattionName, sum(1) as Quantity\n"+
-            "FROM lodging INNER JOIN stations where lodging.stationID = stations.stationID\n"+
-            "group by lodging.stationID\n"+
-            "order by Quantity desc, lodging.stationID asc";
+        if (y == 4) {
+            query = "SELECT lodging.stationID, stations.stattionName, sum(1) as Quantity\n" +
+                    "FROM lodging INNER JOIN stations where lodging.stationID = stations.stationID\n" +
+                    "group by lodging.stationID\n" +
+                    "order by Quantity desc, lodging.stationID asc";
         }
 
-        String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
+        String url = "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
         String userName = "root";
         String passWord = "group5qline";
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(url,userName,passWord);
+        Connection con = DriverManager.getConnection(url, userName, passWord);
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
 
         ArrayList<PlacesCount> list = new ArrayList<PlacesCount>();
 
-        while(rs.next()) {
+        while (rs.next()) {
             int stationID = rs.getInt("stationID");
             String stattionname = rs.getString("stattionname");
             int quantity = rs.getInt("Quantity");
@@ -409,7 +222,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return list;
     }
 
-//    Mapping for option 2 popular venue
+    //    Mapping for option 2 popular venue
     @RequestMapping("getFromCategory")
     public ModelAndView returnEnt(@RequestParam("activity") int x) throws SQLException, ClassNotFoundException {
         ArrayList<PlacesCount> getList = getActivity(x);
@@ -429,7 +242,7 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
 
         HttpHost host2 = new HttpHost("api.wunderground.com", 80, "http");
 
-        HttpGet getPage2 = new HttpGet("/api/"+key+"/conditions/q/MI/Detroit.json");
+        HttpGet getPage2 = new HttpGet("/api/" + key + "/conditions/q/MI/Detroit.json");
 
 
         HttpResponse resp2 = http.execute(host2, getPage2);
@@ -439,28 +252,26 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
 
         JSONObject json = new JSONObject(jsonString);
 
-        int temp= 0;
+        int temp = 0;
         double wind = 0.0;
         String weather = "";
         String showWeather = "";
 
-        weather=json.getJSONObject("current_observation").getString("weather");
-        wind=json.getJSONObject("current_observation").getDouble("wind_mph");
-        temp=json.getJSONObject("current_observation").getInt("temp_f");
-        showWeather=json.getJSONObject("current_observation").getString("icon_url");
+        weather = json.getJSONObject("current_observation").getString("weather");
+        wind = json.getJSONObject("current_observation").getDouble("wind_mph");
+        temp = json.getJSONObject("current_observation").getInt("temp_f");
+        showWeather = json.getJSONObject("current_observation").getString("icon_url");
 
 
         model.addAttribute("showTemp", temp);
-        model.addAttribute("showWind",wind);
-        model.addAttribute("currentWeather",weather);
-        model.addAttribute("Gif",showWeather);
+        model.addAttribute("showWind", wind);
+        model.addAttribute("currentWeather", weather);
+        model.addAttribute("Gif", showWeather);
 
         return "mainpage";
 
 
     }
-
-
 
 
 }
