@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class FBConnection {
     public static final String FB_APP_ID = keys.FB_APP_ID;
     public static final String FB_APP_SECRET = keys.FB_APP_SECRET;
-    public static final String REDIRECT_URI = "http://localhost:8080/welcome2";
+    public static final String REDIRECT_URI = "http://discoverqline.us/welcome2";
 
     static String accessToken = "";
 
@@ -37,7 +37,7 @@ public class FBConnection {
     }
 
     public String getAccessToken(String code) {
-        if (accessToken.equals("")) {
+        //if (accessToken.equals("")) {
             URL fbGraphURL;
             try {
                 fbGraphURL = new URL(getFBGraphUrl(code));
@@ -68,7 +68,7 @@ public class FBConnection {
                 throw new RuntimeException("ERROR: Access Token Invalid: "
                         + accessToken);
             }
-        }
+       // }
         return accessToken;
     }
 }

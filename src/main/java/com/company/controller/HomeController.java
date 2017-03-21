@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.entity.*;
 import com.company.models.PlacesCount;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpHost;
 import org.apache.http.client.HttpClient;
@@ -44,6 +45,11 @@ public class HomeController {
                 ModelAndView("mainpage", "message", "");
     }
 
+    @RequestMapping("privacy")
+    public ModelAndView getPrivacy() {
+        return new
+                ModelAndView("privacypage", "message", "");
+    }
     //    Mapping for plan trip page
     @RequestMapping("plan")
     public ModelAndView planTrip() {
@@ -157,9 +163,21 @@ public class HomeController {
     public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
 
         List<FoodEntity> foodList = getAllFood(stationID);
+        if (!foodList.isEmpty()) {
+            getAllFood(stationID);
+        }
         List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
+        if (!entertainmentList.isEmpty()) {
+            getAllEntertainment(stationID);
+        }
         List<RetailEntity> retailList = getAllRetail(stationID);
+        if (!retailList.isEmpty()) {
+            getAllRetail(stationID);
+        }
         List<LodgingEntity> lodgingList = getAllLodging(stationID);
+        if (!lodgingList.isEmpty()) {
+            getAllLodging(stationID);
+        }
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("food", foodList);
@@ -167,8 +185,18 @@ public class HomeController {
         model.put("retail", retailList);
         model.put("lodging", lodgingList);
 
-        return new ModelAndView("displayChoice", "model", model);
+       // return new ModelAndView("displayChoice", "model", model);
+        if (model.size() == 0) {
+            return new ModelAndView("displayChoice", "model", model);
+        }
+
+        else {
+            return new ModelAndView("displayChoice", "model", model);
+
+        }
+
     }
+
 
     //    Function for Option 2 popular venue around station
     public ArrayList<PlacesCount> getActivity(int y) throws ClassNotFoundException, SQLException {

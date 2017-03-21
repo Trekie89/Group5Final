@@ -97,6 +97,7 @@
                 <a href = "${message}">Facebook Login!</a>
 
                 <a href = "register">Register Here!</a><br>
+                <a href = "privacy"> Privacy Policy</a><br>
                 <a href = "/">Go back to main</a>
 
 
