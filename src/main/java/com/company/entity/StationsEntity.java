@@ -27,10 +27,15 @@ public class StationsEntity {
     @JoinColumn(name="stationID")
     private Set<RetailEntity> retailEntity;
 
-    public StationsEntity(Set<FoodEntity> foodEntity, Set<EntertainmentEntity> entertainmentEntity, Set<RetailEntity> retailEntity) {
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="stationID")
+    private Set<LodgingEntity> lodgingEntity;
+
+    public StationsEntity(Set<FoodEntity> foodEntity, Set<EntertainmentEntity> entertainmentEntity, Set<RetailEntity> retailEntity, Set<LodgingEntity> lodgingEntity) {
         this.foodEntity = foodEntity;
         this.entertainmentEntity = entertainmentEntity;
         this.retailEntity = retailEntity;
+        this.lodgingEntity = lodgingEntity;
     }
 
     public StationsEntity() {

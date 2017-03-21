@@ -150,6 +150,7 @@
                         <option value=1 >Restaurants</option>
                         <option value=2>Entertainment</option>
                         <option value=3>Retail</option>
+                        <option value=4>Lodging</option>
                     </select>
 
                     </form>

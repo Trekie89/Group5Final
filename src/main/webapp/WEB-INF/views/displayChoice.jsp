@@ -157,6 +157,18 @@
 
                 </table> <br>
 
+                <h1> Lodging Nearby </h1> <br>
+
+                <table border=1>
+
+                    <c:forEach var="element" items="${model.lodging}">
+                        <tr>
+                            <td> ${element.name}</td> <td> ${element.address}</td> <td><a href = "${element.website}">${element.website}</a></td>
+                        </tr>
+                    </c:forEach>
+
+                </table> <br>
+
                 <a href = "/">Go back to main</a>
 
             </div>

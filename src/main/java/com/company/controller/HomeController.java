@@ -1,9 +1,6 @@
 package com.company.controller;
 
-import com.company.entity.EntertainmentEntity;
-import com.company.entity.FbuserinfoEntity;
-import com.company.entity.FoodEntity;
-import com.company.entity.RetailEntity;
+import com.company.entity.*;
 import com.company.models.PlacesCount;
 
 import org.apache.http.HttpResponse;
@@ -137,6 +134,13 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
 
         return login;
 
+    }
+
+    @RequestMapping("test")
+    public ModelAndView  testoutput() {
+
+        return new
+                ModelAndView("test", "anything", getAllLodging(2));
     }
 
 //    Mapping for plan trip page
@@ -307,6 +311,20 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         return foodlist;
     }
 
+//   Method to get all lodging according to station
+    public ArrayList<LodgingEntity> getAllLodging(int stationID) {
+
+        Session selectSession = getSession();
+
+        Criteria c = selectSession.createCriteria(LodgingEntity.class);
+
+        c.add(Restrictions.like("stationId", stationID));
+
+        ArrayList<LodgingEntity> lodginglist = (ArrayList<LodgingEntity>) c.list();
+
+        return lodginglist;
+    }
+
 //    Mapping for listing all venues around station
     @RequestMapping("getStation")
     public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
@@ -314,11 +332,13 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
         List<FoodEntity> foodList = getAllFood(stationID);
         List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
         List<RetailEntity> retailList = getAllRetail(stationID);
+        List<LodgingEntity> lodgingList = getAllLodging(stationID);
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("food", foodList);
         model.put("entertainment", entertainmentList);
         model.put("retail", retailList);
+        model.put("lodging", lodgingList);
 
         return new ModelAndView("displayChoice", "model", model);
     }
@@ -359,6 +379,12 @@ public ModelAndView fbLogin(@RequestParam("code") String code,
             "FROM retail INNER JOIN stations where retail.stationID = stations.stationID\n"+
             "group by retail.stationID\n"+
             "order by Quantity desc, retail.stationID asc";
+        }
+        if(y==4){
+            query = "SELECT lodging.stationID, stations.stattionName, sum(1) as Quantity\n"+
+            "FROM lodging INNER JOIN stations where lodging.stationID = stations.stationID\n"+
+            "group by lodging.stationID\n"+
+            "order by Quantity desc, lodging.stationID asc";
         }
 
         String url= "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
