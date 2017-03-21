@@ -8,7 +8,7 @@
 
 ${message}<br>
 
-<a href = "welcome2">Go back to main</a>
+<a href = "/">Go back to main</a>
 
 
 </body>
