@@ -8,8 +8,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class FBConnection {
-    public static final String FB_APP_ID = "1818062278469925";
-    public static final String FB_APP_SECRET = "9b568286bc9f424508117c88f781da86";
+    public static final String FB_APP_ID = keys.FB_APP_ID;
+    public static final String FB_APP_SECRET = keys.FB_APP_SECRET;
     public static final String REDIRECT_URI = "http://localhost:8080/welcome2";
 
     static String accessToken = "";

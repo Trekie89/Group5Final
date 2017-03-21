@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FormController {
 
-//    Mapping to the page for adding to activity form
+    //    Mapping to the page for adding to activity form
     @RequestMapping("addActivity")
     public ModelAndView addActivity() {
 
@@ -24,16 +24,14 @@ public class FormController {
                 ModelAndView("addActivity", "message", "");
     }
 
-//    Mapping to add food venue to database
+    //    Mapping to add food venue to database
     @RequestMapping("addFood")
     public ModelAndView getForm(@RequestParam("name") String name,
                                 @RequestParam("address") String address,
                                 @RequestParam("website") String website,
                                 @RequestParam("stationId") int stationId) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
         Transaction tx = session.beginTransaction();
 
         FoodEntity newFood = new FoodEntity();
@@ -51,7 +49,7 @@ public class FormController {
                 ModelAndView("confirmpage", "message", "Thank you for submitting");
     }
 
-//
+    //
     @RequestMapping("addRetail")
 
     public ModelAndView getForm1(@RequestParam("name") String name,
@@ -59,9 +57,7 @@ public class FormController {
                                  @RequestParam("website") String website,
                                  @RequestParam("stationId") int stationId) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
         Transaction tx = session.beginTransaction();
 
         RetailEntity newRetail = new RetailEntity();
@@ -85,9 +81,7 @@ public class FormController {
                                  @RequestParam("website") String website,
                                  @RequestParam("stationId") int stationId) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
         Transaction tx = session.beginTransaction();
 
         EntertainmentEntity newEntertainment = new EntertainmentEntity();
@@ -105,6 +99,13 @@ public class FormController {
                 ModelAndView("confirmpage", "message", "Thank you for submitting");
     }
 
+    //making a generic session
+    private Session getSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFactory = cfg.buildSessionFactory();
+        return sessionFactory.openSession();
+    }
+
     @RequestMapping("newUser")
     public ModelAndView newUser() {
 
@@ -119,9 +120,7 @@ public class FormController {
                                  @RequestParam("phoneNumber") String phoneNumber,
                                  @RequestParam("password") String password) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
         Transaction tx = session.beginTransaction();
 
         UserinfoEntity newUser = new UserinfoEntity();

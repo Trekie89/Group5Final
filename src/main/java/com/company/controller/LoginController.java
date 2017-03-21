@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,9 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Map;
 
-/**
- * Created by Samantha on 3/21/2017.
- */
 @Controller
 public class LoginController {
 
@@ -34,6 +32,7 @@ public class LoginController {
                 ModelAndView("loginPage", "message", fbConnection.getFBAuthUrl());
     }
 
+    //log in authentication getting the user info from facebook to put into our database
     @RequestMapping("welcome2")
     public ModelAndView fbLogin(@RequestParam("code") String code,
                                 HttpServletResponse response, Model model) {
@@ -48,19 +47,13 @@ public class LoginController {
         Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
 
         String id = fbProfileData.get("id").toString();
-        //       String fname = fbProfileData.get("first_name").toString();
-//        String lname = fbProfileData.get("last_name").toString();
-//        String email = fbProfileData.get("email").toString();
 
-//        Cookie userCookie = new Cookie("userTag", id);
-//        userCookie.setMaxAge(-1);
-//        response.addCookie(userCookie);
+        //making a cookie
+        Cookie userCookie = new Cookie("userTag", id);
+        userCookie.setMaxAge(-1);
+        response.addCookie(userCookie);
 
-//        model.addAttribute("id", id);
-//        model.addAttribute("first_name", fname);
-//        model.addAttribute("last_name", lname);
-//        model.addAttribute("email", email);
-
+        //making sure that the user doesn't get put in our database
         if (fbChck(id) == false) {
 
             Session selectSession = getSession();
@@ -86,6 +79,7 @@ public class LoginController {
         }
     }
 
+    //checks to see if user is already in database
     private boolean fbChck(String id) {
         String query;
         boolean login = false;
@@ -124,6 +118,7 @@ public class LoginController {
 
     }
 
+    //this makes sure they have the correct username and password
     @RequestMapping("validate")
     public ModelAndView validateUserPass(@RequestParam ("userLogin") String userLogin,
                                          @RequestParam("password") String pass) {
@@ -145,6 +140,7 @@ public class LoginController {
 
     }
 
+    //makes sure that user is not already in database
     private boolean logChck(String username, String password) {
         String query;
         boolean login = false;
@@ -168,15 +164,12 @@ public class LoginController {
             int checkUser = rs.getInt(1);
 
 
-            if(checkUser==1)
-            {
+            if(checkUser==1) {
                 login = true;
             }
-            else
-            {
+            else {
                 login = false;
             }
-
             con.close();
         }
 

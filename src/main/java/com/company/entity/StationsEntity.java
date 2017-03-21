@@ -4,9 +4,7 @@ package com.company.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Samantha on 3/13/2017.
- */
+
 @Entity
 @Table(name = "stations", schema = "qline", catalog = "")
 public class StationsEntity {

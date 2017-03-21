@@ -4,9 +4,6 @@ import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.*;
 
-/**
- * Created by Mike on 3/21/2017.
- */
 @Entity
 @Table(name = "lodging", schema = "qline", catalog = "")
 public class LodgingEntity {

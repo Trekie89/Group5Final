@@ -2,9 +2,6 @@ package com.company.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Samantha on 3/17/2017.
- */
 @Entity
 @Table(name = "fbuserinfo", schema = "qline", catalog = "")
 public class FbuserinfoEntity {

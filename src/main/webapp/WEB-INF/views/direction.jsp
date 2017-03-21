@@ -8,7 +8,6 @@
 
     <script>
         function calculateRoute(from, to) {
-            // Center initialized to Naples, Italy
             var myOptions = {
                 zoom: 15,
                 center: new google.maps.LatLng(42.351417, -83.060537),

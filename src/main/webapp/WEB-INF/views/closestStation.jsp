@@ -78,9 +78,9 @@
                     });
                 //calculate and draw route from A to B
                 calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                map.setCenter(pos);
+//                infoWindow.setPosition(pos);
+//                infoWindow.setContent('Location found.');
+//                map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });

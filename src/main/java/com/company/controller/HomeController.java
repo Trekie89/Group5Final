@@ -201,8 +201,8 @@ public class HomeController {
         }
 
         String url = "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
-        String userName = "root";
-        String passWord = "group5qline";
+        String userName = keys.userName;
+        String passWord = keys.passWord;
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, userName, passWord);
         Statement st = con.createStatement();
