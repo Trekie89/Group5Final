@@ -104,8 +104,9 @@
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-cloud fa-stack-1x text-primary"></i>
                             </span>
-
-                            <p>Choose how to plan your trip</p>
+                            <h4>
+                                <strong>Plan Trip</strong>
+                            </h4>
                             <a href="plan" class="btn btn-light">Plan</a>
                         </div>
                     </div>
@@ -116,9 +117,8 @@
                                 <i class="fa fa-compass fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>About</strong>
+                                <strong>About the Qline</strong>
                             </h4>
-                            <p>Learn about the Qline</p>
                             <a href="about" class="btn btn-light">Learn More</a>
 
                         </div>
@@ -132,8 +132,7 @@
                             <h4>
                                 <strong>Qline FAQ's</strong>
                             </h4>
-                            <p>Make sure you know what to do!</p>
-                            <a href="safety" class="btn btn-light">Learn More</a>
+                            <a href="safety" class="btn btn-light">Questions</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -145,7 +144,6 @@
                             <h4>
                                 <strong>Add Activity</strong>
                             </h4>
-                            <p>Not seeing something on our site, please put it in!</p>
                             <a href="addActivity" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
@@ -161,8 +159,8 @@
 
 <!-- Portfolio -->
 <section id="portfolio" class="portfolio">
-    <div class="container" style="align-content: center">
-        <div class="row" style="align-content: center">
+    <div class="container">
+        <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
                 <h2>Map of the Stations</h2>
                 <hr class="small">
@@ -174,10 +172,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <!-- /.row (nested) -->
-                <a href="#" class="btn btn-dark">View More Items</a>
-            </div>
             <!-- /.col-lg-10 -->
         </div>
         <!-- /.row -->
