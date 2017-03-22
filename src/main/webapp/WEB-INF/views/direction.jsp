@@ -185,7 +185,8 @@
                     </select>
                     <br/>
                     <input type="submit" />
-                    <input type="reset" />
+                    <input type="reset" /> <br>
+                    <a href="closestStation">Get Closest Station</a>
                 </form>
 
                 <div id="map"></div>

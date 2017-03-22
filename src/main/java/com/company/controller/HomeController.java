@@ -58,6 +58,14 @@ public class HomeController {
                 ModelAndView("plantrip", "cList", "hello world");
     }
 
+
+    @RequestMapping("closestStation")
+    public ModelAndView closestStation() {
+
+        return new
+                ModelAndView("closestStation", "message", "");
+    }
+
     //    Mapping for direction
     @RequestMapping("direction")
     public ModelAndView getDirection() {
