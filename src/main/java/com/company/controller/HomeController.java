@@ -258,14 +258,29 @@ public class HomeController {
         return list;
     }
 
-    //    Mapping for option 2 popular venue
+    //Mapping for option 2 returning list of what's around each station by one of four types.
     @RequestMapping("getFromCategory")
-    public ModelAndView returnEnt(@RequestParam("activity") int x) throws SQLException, ClassNotFoundException {
+    public String returnEnt(@RequestParam("activity") int x, Model model) throws SQLException, ClassNotFoundException {
         ArrayList<PlacesCount> getList = getActivity(x);
 
-        return new ModelAndView("entertainmentNear", "nearby", getList);
-    }
+        model.addAttribute("nearby", getList);
+        if(x==1){
+            model.addAttribute("nearby1", "Restaurants");
+        }
+        if(x==2){
+            model.addAttribute("nearby1", "Entertainment venues");
+        }
+        if(x==3){
+            model.addAttribute("nearby1", "Retail");
+        }
+        if(x==4){
+            model.addAttribute("nearby1", "Lodging");
+        }
 
+        return "entertainmentNear";
+
+
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
 
