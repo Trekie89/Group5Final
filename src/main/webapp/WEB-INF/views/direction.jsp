@@ -31,7 +31,7 @@
 
     <meta charset="UTF-8" />
     <title>Find a route using Geolocation and Google Maps API</title>
-    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBiTnh1b5-ttcN2zyjt2Sb5VFf0oYdqtqU"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <script>

@@ -77,7 +77,7 @@
             <div class="col-lg-12 text-center">
 
                 <h1> Restaurants Nearby </h1> <br>
-                <table border=1>
+                <table border=1 align="center">
 
                     <c:forEach var="element" items="${model.food}">
                         <tr>
@@ -88,7 +88,7 @@
                 </table> <br>
 
                 <h1> Entertainment Nearby </h1> <br>
-                <table border=1>
+                <table border=1 align="center">
 
                     <c:forEach var="element" items="${model.entertainment}">
                         <tr>
@@ -100,7 +100,7 @@
 
                 <h1> Retail Nearby </h1> <br>
 
-                <table border=1>
+                <table border=1 align="center">
 
                     <c:forEach var="element" items="${model.retail}">
                         <tr>
@@ -112,7 +112,7 @@
 
                 <h1> Lodging Nearby </h1> <br>
 
-                <table border=1>
+                <table border=1 align="center">
 
                     <c:forEach var="element" items="${model.lodging}">
                         <tr>
