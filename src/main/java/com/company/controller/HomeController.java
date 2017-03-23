@@ -200,7 +200,6 @@ public class HomeController {
 
         /*else {*/
             return new ModelAndView("displayChoice", "model", model);
-
         }
 
     //}
