@@ -90,6 +90,7 @@
                             <td>  <form action="getStation" method="get">
                                 <button name="stationId" type="submit" value="${station.stationID}">Get Info</button>
                             </form> </td>
+                            <td> ${station.discount}</td>
                         </tr>
                     </c:forEach>
                 </table>

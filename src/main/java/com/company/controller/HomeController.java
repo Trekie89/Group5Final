@@ -236,6 +236,7 @@ public class HomeController {
                     "order by Quantity desc, lodging.stationID asc";
         }
 
+        String discount = "";
         String url = "jdbc:mysql://q-line.cfffyru1vsmy.us-east-2.rds.amazonaws.com/qline";
         String userName = keys.userName;
         String passWord = keys.passWord;
@@ -252,6 +253,13 @@ public class HomeController {
             int quantity = rs.getInt("Quantity");
             PlacesCount temp = new PlacesCount(stationID, stattionname, quantity);
             list.add(temp);
+
+            if (quantity <= 5 && y==1) {
+                discount = "5% off";
+            }
+            else {
+                discount = "no discount";
+            }
         }
         st.close();
         con.close();
