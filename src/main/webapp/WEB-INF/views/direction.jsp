@@ -31,8 +31,8 @@
 
     <meta charset="UTF-8" />
     <title>Find a route using Geolocation and Google Maps API</title>
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <script>
         function calculateRoute(from, to) {
@@ -203,33 +203,6 @@
 </section>
 
 
-
-<!-- Portfolio -->
-<section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Map of the Stations</h2>
-                <hr class="small">
-                <div class="row">
-                    <div class="col-md-offset-3 col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row (nested) -->
-            </div>
-            <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</section>
-
-
 <!-- Footer -->
 <footer>
     <div class="container">
@@ -257,6 +230,7 @@
                     </li>
                 </ul>
                 <hr class="small">
+                <p>Samantha Behn, Wei Oo, Michael Preston, Robert Fretter</p>
                 <p class="text-muted">Copyright &copy; Your Website 2017</p>
             </div>
         </div>
