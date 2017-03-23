@@ -63,7 +63,7 @@
 <!-- Header -->
 <header id="top" class="header">
     <div class="text-vertical-center">
-        <h1 style="color:#ff1f00">QLine Trip Planner</h1>
+        <h1 style="color:#ff1f00">Discover the Q-Line</h1>
         <br>
     </div>
 </header>

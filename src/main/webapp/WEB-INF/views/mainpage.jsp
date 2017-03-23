@@ -72,7 +72,7 @@
         <img src="${Gif}">
     </div>
     <div class="text-vertical-center" style="position: relative">
-        <h1 style="color:#ff1f00">QLine Trip Planner</h1>
+        <h1 style="color:#ff1f00">Discover the Q-Line</h1>
         <br>
         <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
     </div>
