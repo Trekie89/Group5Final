@@ -138,7 +138,7 @@
                 <h2>Map of the Stations</h2>
                 <hr class="small">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-offset-3 col-md-6">
                         <div class="portfolio-item">
                             <a href="#">
                                 <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
