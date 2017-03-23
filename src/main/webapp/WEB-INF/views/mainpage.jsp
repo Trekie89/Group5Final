@@ -194,7 +194,7 @@
 //Change this to display more info
 
         var info = [
-            {stationName:"Grand Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Grand Station", image: document.getElementById("yourDivName").src = "GrandCircus.JPG"},
             {stationName:"Amtrak Park", image: "../resources/images/GrandCircus.JPG"},
             {stationName:"Amsterdam Station", image: "../resources/images/GrandCircus.JPG"},
             {stationName:"Ferry Station", image: "../resources/images/GrandCircus.JPG"},
