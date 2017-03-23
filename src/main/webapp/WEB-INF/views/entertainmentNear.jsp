@@ -81,6 +81,7 @@
                         <th>Station Name</th>
                         <th>${nearby1} nearby</th>
                         <th>See Station Info</th>
+                        <th>Discount</th>
                     </tr>
                     <c:forEach var="station" items="${nearby}">
                         <tr>

@@ -171,21 +171,21 @@ public class HomeController {
     public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
 
         List<FoodEntity> foodList = getAllFood(stationID);
-        if (!foodList.isEmpty()) {
+        /*if (!foodList.isEmpty()) {
             getAllFood(stationID);
-        }
+        }*/
         List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
-        if (!entertainmentList.isEmpty()) {
+        /*if (!entertainmentList.isEmpty()) {
             getAllEntertainment(stationID);
-        }
+        }*/
         List<RetailEntity> retailList = getAllRetail(stationID);
-        if (!retailList.isEmpty()) {
+        /*if (!retailList.isEmpty()) {
             getAllRetail(stationID);
-        }
+        }*/
         List<LodgingEntity> lodgingList = getAllLodging(stationID);
-        if (!lodgingList.isEmpty()) {
+        /*if (!lodgingList.isEmpty()) {
             getAllLodging(stationID);
-        }
+        }*/
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("food", foodList);
@@ -193,17 +193,17 @@ public class HomeController {
         model.put("retail", retailList);
         model.put("lodging", lodgingList);
 
-       // return new ModelAndView("displayChoice", "model", model);
+       /*// return new ModelAndView("displayChoice", "model", model);
         if (model.size() == 0) {
             return new ModelAndView("displayChoice", "model", model);
-        }
+        }*/
 
-        else {
+        /*else {*/
             return new ModelAndView("displayChoice", "model", model);
 
         }
 
-    }
+    //}
 
 
     //    Function for Option 2 popular venue around station
@@ -251,8 +251,6 @@ public class HomeController {
             int stationID = rs.getInt("stationID");
             String stattionname = rs.getString("stattionname");
             int quantity = rs.getInt("Quantity");
-            PlacesCount temp = new PlacesCount(stationID, stattionname, quantity);
-            list.add(temp);
 
             if (quantity <= 5 && y==1) {
                 discount = "5% off";
@@ -260,6 +258,9 @@ public class HomeController {
             else {
                 discount = "no discount";
             }
+            PlacesCount temp = new PlacesCount(stationID, stattionname, quantity, discount);
+            list.add(temp);
+
         }
         st.close();
         con.close();
