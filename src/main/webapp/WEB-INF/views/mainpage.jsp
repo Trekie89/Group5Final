@@ -160,28 +160,160 @@
 </section>
 
 <!-- Portfolio -->
-<section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Map of the Stations</h2>
-                <hr class="small">
-                <div class="row">
-                    <div class="col-md-offset-3 col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- /.col-lg-10 -->
-                </div>
-                <!-- /.row -->
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
-</section>
+
+<link rel="stylesheet" type="text/css" href="../resources/css/map.css">
+
+<!--Fixed when scrolling -->
+
+<div id="parent" style="position:fixed; top:300px; left: 1100px; width: 200px;background-color: transparent; float: right;">
+
+    <%--Welcome!--%>
+
+    <div id="popup" style="display: none"></div>
+
+</div>
+
+<div style="margin-left: 200px; background-color: #CCFFFF">
+
+    <img src="../resources/images/map.png" width="800" height="3771" border="0" usemap="#map" />
+
+</div>
+
+<script type="text/javascript">
+
+    //When the mouse leaves the section
+
+    function runAway(){
+
+        document.getElementById('popup').style.display = 'none';
+
+    }
+
+    function displayInfo(station){
+
+//Change this to display more info
+
+        var info = [
+            {stationName:"Grand Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Amtrak Park", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Amsterdam Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Ferry Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Warren Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Canfield Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Martin Luther King Jr. Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Sibley Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Foxtown Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Grand Circus", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Campus Marius Station", image: "../resources/images/GrandCircus.JPG"},
+            {stationName:"Congress Station", image: "../resources/images/GrandCircus.JPG"}
+        ];
+
+
+                /*["Grand Station",
+
+            "Amtrak Park",
+
+            "Amsterdam Station",
+
+            "Ferry Station",
+
+            "Warren Station",
+
+            "Canfield Station",
+
+            "Martin Luther King Jr. Station",
+
+            "Sibley Station",
+
+            "Foxtown Station",
+
+//            document.getElementById("myImg").src = "../resources/images/GrandCircus.JPG",
+            "Grand Circus",
+
+            "Campus Marius Station",
+
+            "Congress Station"
+
+        ];*/
+
+        document.getElementById('popup').style.display = 'block';
+
+        document.getElementById('popup').innerHTML=info[station];
+
+        return info[station];
+
+    }
+
+</script>
+
+<!-- onemouserover/onclick -->
+
+<map name="map">
+
+    <area shape="circle" coords="379,272,22" onmouseover="displayInfo.stationName(0); displayInfo.image(0)" onmouseout="runAway()"  nohref="nohref" />
+
+    <area shape="circle" coords="379,404,23" onmouseover="displayInfo(1);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="380,525,23" onmouseover="displayInfo(2);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="415,948,22" onmouseover="displayInfo(3);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="340,948,23" onmouseover="displayInfo(3);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="412,1173,22" onmouseover="displayInfo(4);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="341,1234,23" onmouseover="displayInfo(4);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="413,1470,23" onmouseover="displayInfo(5);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="341,1473,22" onmouseover="displayInfo(5);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="415,1826,23" onmouseover="displayInfo(6);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="342,1827,22" onmouseover="displayInfo(6);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="342,2212,22" onmouseover="displayInfo(7);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="416,2244,21" onmouseover="displayInfo(7);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="343,2481,22" onmouseover="displayInfo(8);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="415,2483,21" onmouseover="displayInfo(8);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="339,2869,22" onmouseover="displayInfo(9);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="414,2869,22" onmouseover="displayInfo(9);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="412,3393,24" onmouseover="displayInfo(10);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="343,3428,21" onmouseover="displayInfo(10);" onmouseout="runAway()" nohref="nohref" />
+
+    <area shape="circle" coords="379,3729,21" onmouseover="displayInfo(11);"  nohref="nohref" />
+
+</map>
+
+<%--<section id="portfolio" class="portfolio">--%>
+    <%--<div class="container">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-lg-10 col-lg-offset-1 text-center">--%>
+                <%--<h2>Map of the Stations</h2>--%>
+                <%--<hr class="small">--%>
+                <%--<div class="row">--%>
+                    <%--<div class="col-md-offset-3 col-md-6">--%>
+                        <%--<div class="portfolio-item">--%>
+                            <%--<a href="#">--%>
+                                <%--<img class="img-portfolio img-responsive" src="../resources/images/map.jpg">--%>
+                            <%--</a>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<!-- /.col-lg-10 -->--%>
+                <%--</div>--%>
+                <%--<!-- /.row -->--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<!-- /.container -->--%>
+<%--</section>--%>
 
 
 <!-- Footer -->

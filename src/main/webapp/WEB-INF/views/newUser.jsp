@@ -94,7 +94,7 @@
                     User Name: <input type="text" name="userLogin"><br>
                     First Name: <input type="text" name="firstName"><br>
                     Last Name: <input type="text" name="lastName"><br>
-                    <label for="phonenum">Phone Number (format: xxxx-xxx-xxxx):</label>
+                    <label for="phonenum">Phone Number (format: 1xxx-xxx-xxxx):</label>
                     <input id="phonenum" type="tel" pattern="^\d{4}-\d{3}-\d{4}$" name="phoneNumber" required >
                     Password: <input type="password" name="password"><br>
                     <input type="submit" value="submit">

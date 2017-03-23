@@ -1,0 +1,7 @@
+#parent #popup {
+  display: none;
+}
+
+#parent:hover #popup {
+  display: block;
+}
