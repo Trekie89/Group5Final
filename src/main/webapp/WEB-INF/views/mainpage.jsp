@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +20,8 @@
 
     <!-- Custom Fonts -->
     <link href="../resources/font.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
 
+</style>
 </head>
 
 <body>
@@ -37,9 +39,9 @@
 <!-- Navigation -->
 
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-<nav id="sidebar-wrapper" style = "color: white">
+<nav id="sidebar-wrapper" style="color: white">
     <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle" ><i class="fa fa-times"></i></a>
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <li class="sidebar-brand">
             <a href="/" onclick=$("#menu-close").click();>Home</a>
         </li>
@@ -62,14 +64,14 @@
 </nav>
 
 <!-- Header -->
-<header id="top" class="header">
-    <div style="background-color: transparent; position: absolute;text-align: center;height:175px;width:180px;border:1px solid black">
+<header id="top" class="header-main">
+    <div style="background-color: transparent; position: absolute;text-align: center;height:175px;width:180px">
         <h4>Temperature: ${showTemp} &#8457;</h4>
         <h4>Wind Speed: ${showWind} m.p.h</h4>
         <h4>Current Conditions: ${currentWeather}</h4>
-        <img src = "${Gif}">
+        <img src="${Gif}">
     </div>
-    <div class="text-vertical-center"style="position: relative">
+    <div class="text-vertical-center" style="position: relative">
         <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
         <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
@@ -144,7 +146,7 @@
                             <h4>
                                 <strong>Add Activity</strong>
                             </h4>
-                            <a href="addActivity" class="btn btn-light">Learn More</a>
+                            <a href="addActivity" class="btn btn-light">Add</a>
                         </div>
                     </div>
                 </div>
@@ -165,16 +167,18 @@
                 <h2>Map of the Stations</h2>
                 <hr class="small">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-offset-3 col-md-6">
                         <div class="portfolio-item">
                             <a href="#">
                                 <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
                             </a>
                         </div>
                     </div>
-            <!-- /.col-lg-10 -->
+                    <!-- /.col-lg-10 -->
+                </div>
+                <!-- /.row -->
+            </div>
         </div>
-        <!-- /.row -->
     </div>
     <!-- /.container -->
 </section>
@@ -223,18 +227,18 @@
 <!-- Custom Theme JavaScript -->
 <script>
     // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
+    $("#menu-close").click(function (e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
     });
     // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
     });
     // Scrolls to the selected menu item on the page
-    $(function() {
-        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+    $(function () {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function () {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -249,12 +253,12 @@
     });
     //#to-top button appears after scrolling
     var fixed = false;
-    $(document).scroll(function() {
+    $(document).scroll(function () {
         if ($(this).scrollTop() > 250) {
             if (!fixed) {
                 fixed = true;
                 // $('#to-top').css({position:'fixed', display:'block'});
-                $('#to-top').show("slow", function() {
+                $('#to-top').show("slow", function () {
                     $('#to-top').css({
                         position: 'fixed',
                         display: 'block'
@@ -264,7 +268,7 @@
         } else {
             if (fixed) {
                 fixed = false;
-                $('#to-top').hide("slow", function() {
+                $('#to-top').hide("slow", function () {
                     $('#to-top').css({
                         display: 'none'
                     });
@@ -275,13 +279,13 @@
     // Disable Google Maps scrolling
     // See http://stackoverflow.com/a/25904582/1607849
     // Disable scroll zooming and bind back the click event
-    var onMapMouseleaveHandler = function(event) {
+    var onMapMouseleaveHandler = function (event) {
         var that = $(this);
         that.on('click', onMapClickHandler);
         that.off('mouseleave', onMapMouseleaveHandler);
         that.find('iframe').css("pointer-events", "none");
     }
-    var onMapClickHandler = function(event) {
+    var onMapClickHandler = function (event) {
         var that = $(this);
         // Disable the click handler until the user leaves the map area
         that.off('click', onMapClickHandler);

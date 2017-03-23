@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
 
-                <table border="1">
+                <table border="1" align="center">
                     <tr>
 
                         <th>Station Name</th>
@@ -114,7 +114,7 @@
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="portfolio-item">
+                        <div class="portfolio-item" style="margin: 0 auto">
                             <a href="#">
                                 <img class="img-portfolio img-responsive" src="../resources/images/map.jpg">
                             </a>
