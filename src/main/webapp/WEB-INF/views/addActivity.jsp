@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Add Activity</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../resources/css/bootstrapmin.css" rel="stylesheet">

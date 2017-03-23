@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Plan Trip</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../resources/css/bootstrapmin.css" rel="stylesheet">
@@ -120,7 +120,7 @@
                         </select>
                     </form>
                     <br>
-                <a href = "plan">Go back to choices</a>
+                <a href = "/">Go back to main</a>
             </div>
         </div>
         <!-- /.row -->
