@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Your choice</title>
+    <title>Stylish Portfolio - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../resources/css/bootstrapmin.css" rel="stylesheet">
@@ -64,7 +64,7 @@
 <!-- Header -->
 <header id="top" class="header">
     <div class="text-vertical-center">
-        <h1 style="color:#ff1f00">Discover the Q-Line</h1>
+        <h1 style="color:#ff1f00">QLine Trip Planner</h1>
         <br>
         <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
     </div>
@@ -78,6 +78,12 @@
 
                 <h1> Restaurants Nearby </h1> <br>
                 <table border=1 align="center">
+                    <tr style="font-weight:bold;">
+
+                        <th><center>Restaurant</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>Website</center></th>
+                    </tr>
 
                     <c:forEach var="element" items="${model.food}">
                         <tr>
@@ -89,6 +95,12 @@
 
                 <h1> Entertainment Nearby </h1> <br>
                 <table border=1 align="center">
+                    <tr style="font-weight:bold;">
+
+                        <th><center>Entertainment Venue</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>Website</center></th>
+                    </tr>
 
                     <c:forEach var="element" items="${model.entertainment}">
                         <tr>
@@ -101,6 +113,12 @@
                 <h1> Retail Nearby </h1> <br>
 
                 <table border=1 align="center">
+                    <tr style="font-weight:bold;">
+
+                        <th><center>Retail</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>Website</center></th>
+                    </tr>
 
                     <c:forEach var="element" items="${model.retail}">
                         <tr>
@@ -112,7 +130,14 @@
 
                 <h1> Lodging Nearby </h1> <br>
 
+
                 <table border=1 align="center">
+                    <tr style="font-weight:bold;">
+
+                        <th><center>Lodging</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>Website</center></th>
+                    </tr>
 
                     <c:forEach var="element" items="${model.lodging}">
                         <tr>
@@ -186,7 +211,6 @@
                     </li>
                 </ul>
                 <hr class="small">
-                <p>Samantha Behn, Wei Oo, Michael Preston, Robert Fretter</p>
                 <p class="text-muted">Copyright &copy; Your Website 2017</p>
             </div>
         </div>
@@ -257,5 +281,3 @@
 </body>
 
 </html>
-
-
