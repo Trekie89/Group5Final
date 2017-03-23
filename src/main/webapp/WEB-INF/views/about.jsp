@@ -51,7 +51,7 @@
             <a href="about" onclick=$("#menu-close").click();>About</a>
         </li>
         <li>
-            <a href="Qline FAQ" onclick=$("#menu-close").click();>Safety</a>
+            <a href="safety" onclick=$("#menu-close").click();>Qline FAQ's</a>
         </li>
         <li>
             <a href="addActivity" onclick=$("#menu-close").click();>Add Activity</a>
