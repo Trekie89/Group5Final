@@ -207,6 +207,7 @@
                     </li>
                 </ul>
                 <hr class="small">
+                <p>Samantha Behn, Wei Oo, Michael Preston, Robert Fretter</p>
                 <p class="text-muted">Copyright &copy; Your Website 2017</p>
             </div>
         </div>
