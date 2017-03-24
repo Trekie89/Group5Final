@@ -200,7 +200,6 @@
 
 <div id="parent" style="position:fixed; top:300px; left:1000px;background-color: transparent; float: right;">
 
-    Test
     <div id="popup" style="display: none"></div>
 </div>
 

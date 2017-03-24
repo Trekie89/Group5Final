@@ -5,7 +5,6 @@ import com.company.entity.FoodEntity;
 import com.company.entity.LodgingEntity;
 import com.company.entity.RetailEntity;
 import com.company.models.PlacesCount;
-import com.company.util.keys;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
