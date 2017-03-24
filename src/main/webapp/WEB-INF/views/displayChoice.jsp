@@ -62,9 +62,9 @@
 </nav>
 
 <!-- Header -->
-<header id="top" class="header">
+<header id="top" class="${station}">
     <div class="text-vertical-center">
-        <h1 style="color:black">Discover the QLine</h1>
+        <h1 style="color:white">Discover the QLine</h1>
         <br>
         <a href="login" class="btn btn-dark btn-lg">Login/Register</a>
     </div>

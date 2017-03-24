@@ -168,7 +168,45 @@ public class HomeController {
 
     //    Mapping for listing all venues around station
     @RequestMapping("getStation")
-    public ModelAndView nearStation(@RequestParam("stationId") int stationID) {
+    public ModelAndView nearStation(@RequestParam("stationId") int stationID, Model model1) {
+
+        String statImage = "";
+        if(stationID==1){
+            statImage = "header1";
+        }
+        if(stationID==2){
+            statImage = "header2";
+        }
+        if(stationID==3){
+            statImage = "header3";
+        }
+        if(stationID==4){
+            statImage = "header4";
+        }
+        if(stationID==5){
+            statImage = "header5";
+        }
+        if(stationID==6){
+            statImage = "header6";
+        }
+        if(stationID==7){
+            statImage = "header7";
+        }
+        if(stationID==8){
+            statImage = "header8";
+        }
+        if(stationID==9){
+            statImage = "header9";
+        }
+        if(stationID==10){
+            statImage = "header10";
+        }
+        if(stationID==11){
+            statImage = "header11";
+        }
+        if(stationID==12){
+            statImage = "header12";
+        }
 
         List<FoodEntity> foodList = getAllFood(stationID);
         /*if (!foodList.isEmpty()) {
@@ -192,6 +230,12 @@ public class HomeController {
         model.put("entertainment", entertainmentList);
         model.put("retail", retailList);
         model.put("lodging", lodgingList);
+       //
+        // model.put("station", statImage);
+
+        model1.addAttribute("station", statImage);
+
+
 
        /*// return new ModelAndView("displayChoice", "model", model);
         if (model.size() == 0) {
