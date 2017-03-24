@@ -4,6 +4,12 @@
 
 <head>
 
+    <link rel="icon"
+
+          type="image/png"
+
+          href="https://emoji.slack-edge.com/T04UPFZ31/k00lmel/f123e5e27d7d5c36.jpg">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
