@@ -5,3 +5,17 @@
 #parent:hover #popup {
   display: block;
 }
+
+.portrait {
+  display:block;
+  height:300px;
+  width:300px;
+}
+
+#Style {
+  position:absolute;
+  visibility:hidden;
+  border:solid 1px #CCC;
+  padding:5px;
+
+}

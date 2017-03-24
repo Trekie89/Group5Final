@@ -1,11 +1,13 @@
 package com.company.controller;
 
-import com.company.entity.*;
+import com.company.entity.EntertainmentEntity;
+import com.company.entity.FoodEntity;
+import com.company.entity.LodgingEntity;
+import com.company.entity.RetailEntity;
 import com.company.models.PlacesCount;
-
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.apache.http.HttpResponse;
+import com.company.util.keys;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -13,7 +15,6 @@ import org.apache.http.util.EntityUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.json.JSONObject;
@@ -24,8 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -209,44 +208,39 @@ public class HomeController {
         }
 
         List<FoodEntity> foodList = getAllFood(stationID);
-        /*if (!foodList.isEmpty()) {
+        if (!foodList.isEmpty()) {
             getAllFood(stationID);
-        }*/
+        }
         List<EntertainmentEntity> entertainmentList = getAllEntertainment(stationID);
-        /*if (!entertainmentList.isEmpty()) {
+        if (!entertainmentList.isEmpty()) {
             getAllEntertainment(stationID);
-        }*/
+        }
         List<RetailEntity> retailList = getAllRetail(stationID);
-        /*if (!retailList.isEmpty()) {
+        if (!retailList.isEmpty()) {
             getAllRetail(stationID);
-        }*/
+        }
         List<LodgingEntity> lodgingList = getAllLodging(stationID);
-        /*if (!lodgingList.isEmpty()) {
+        if (!lodgingList.isEmpty()) {
             getAllLodging(stationID);
-        }*/
+        }
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("food", foodList);
         model.put("entertainment", entertainmentList);
         model.put("retail", retailList);
         model.put("lodging", lodgingList);
-       //
-        // model.put("station", statImage);
-
         model1.addAttribute("station", statImage);
 
-
-
-       /*// return new ModelAndView("displayChoice", "model", model);
+       // return new ModelAndView("displayChoice", "model", model);
         if (model.size() == 0) {
-            return new ModelAndView("displayChoice", "model", model);
-        }*/
-
-        /*else {*/
             return new ModelAndView("displayChoice", "model", model);
         }
 
-    //}
+        else {
+            return new ModelAndView("displayChoice", "model", model);
+        }
+
+    }
 
 
     //    Function for Option 2 popular venue around station
@@ -334,6 +328,7 @@ public class HomeController {
 
     }
 
+    //weather api
     @RequestMapping(value = "/", method = RequestMethod.GET)
 
     public String getWeather2(Model model) throws IOException {
